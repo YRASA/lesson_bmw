@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度地图</title>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=UmGzCgAmB7gfkO4EL2FZd43jVAc7BKFT"></script>
+    <style>
+        /* css reset 工作流程 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #map{
+            /* 占据整个屏幕 */
+            /* vw vh 来自移动时代的新单位 px马上过时 
+               vw:vierport width 根据视窗出相对单位(不管什么设备)
+            */
+            width: 80vw;
+            height: 100vh;
+            /* css调试技巧 */
+            background-color: pink; 
+        }
+        .suggestion{
+            position: absolute;
+            top: 0;
+            right: 10vw;
+            width: 10vw;
+            height: 10vh;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 展示来自百度的地图 -->
+    <!-- 地图在这显示 -->
+    <div>
+        <div id="map"></div>
+        <div class="suggestion">
+            <div id="r-result">请输入:
+                <input type="text" id="suggestion" size="20" value="百度">
+            </div>
+        </div>
+    </div>
+    <script>
+        // js 的编程 html css js 都加载完成了
+        //baidu sdk 下载完成
+        window.onload = function(){
+            // 405 错误 来自于用户的错误
+            // 500 服务器错误
+            // 404 Not Found 
+            // console.log('ready')
+            var map = new BMap.Map('map'); //实例化地图
+            map.centerAndZoom("科隆",14) // 中心设置 zoom
+        }
+    </script>
+</body>
+</html>
