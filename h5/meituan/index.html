@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+    <title>Document</title>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=UmGzCgAmB7gfkO4EL2FZd43jVAc7BKFT"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /* css继承 */
+            font-size: 0.28rem;
+            line-height: 1.5;
+        }
+        img{
+            max-width: 100%;
+        }
+        #map{
+            width: 100vw;
+            height: 100vh;
+        }
+        .poi-item-wrapper{
+            background-color: #fff;
+            padding: 0.24rem 0 0 0.3rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .poi-item-wrapper .poi-info-wrapper{
+            display: flex;
+        }
+        .poi-item-wrapper .poi-image-wrapper{
+            position: relative;
+            margin-top: 0.05rem;
+            width: 1.6rem;
+            height: 1.61rem;
+        }
+        .poi-item-wrapper .poi-info{
+            margin-left: 0.18rem;
+            flex: 1;
+        }
+        .poi-item-wrapper .poi-info .price-wrapper{
+            position: relative;
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+            margin-top: 0.06rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 2rem;
+
+        }
+        .poi-item-wrapper .poi-info .location{
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0.33rem;
+            line-height: 0.33rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            color: #666666;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 附近商家 -->
+    <div class="shop-list">
+        <div class="poi-item-wrapper">
+            <div class="poi-info-wrapper">
+                <div class="image-wrapper">
+                    <div class="imagebox">
+                        <img src="http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c" alt="">
+                    </div>
+                </div>
+                <div class="poi-info">
+                    <div class="poi-name"></div>
+                    <div class="price-wrapper">
+                        <div class="location"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="poi-item-wrapper">
+            
+        </div>
+    </div>
+    <!-- <div id="map"></div> -->
+    <script>
+        const myLatitude = '31.205568',
+              myLongitude = '121.439446',
+              TianZiFangLatitude = '31.214237',
+              TianZiFangLongitude = '121.474957';
+        window.onload = function(){
+            function parseDistance(distance){
+                //如果大于1000米则返回km
+                //否则返回m
+                if (distance < 1000){
+                    return parseInt(distance)+"m";
+                }else{
+                    return (distance/1000).toFixed(1)+"km";
+                }
+            }
+            const map = new BMap.Map('map'); //实例化地图
+            // map.centerAndZoom("上海书城(长宁店)",17)
+            //两点距离
+            const myPoint = new BMap.Point(myLongitude, myLatitude);
+            const TianZiFangPoint = new BMap.Point(TianZiFangLongitude,TianZiFangLatitude);
+            const distance = parseDistance(map.getDistance(myPoint, TianZiFangPoint));
+            console.log(distance);
+            document.querySelector('.poi-name').innerHTML = '肯德基';
+            document.querySelector('.location').innerHTML = distance;
+            document.querySelector('.imagebox img').src = "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+        }
+    </script>
+</body>
+</html>
