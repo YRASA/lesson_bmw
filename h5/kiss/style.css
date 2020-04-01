@@ -100,6 +100,7 @@ body{
     left: 20px;
     top: 22px;
     opacity: 0;
+    animation: kiss-m 4s ease infinite;
 }
 .kiss{
     width: 13px;
@@ -112,10 +113,37 @@ body{
     animation: close 4s ease infinite;
     z-index: 50;
 }
+#r-ball{
+    animation: kiss 4s ease infinite;
+}
 .face-l{
     /* ease:匀速 infinite:无限 */
     animation: face 4s ease infinite;
 }
+.mouth-r{
+    animation: mouth-m 4s ease infinite;
+}
+@keyframes mouth-m{
+    0%{opacity: 1;}
+    54.9%{opacity: 1;}
+    55%{opacity: 0;}
+    66%{opacity: 0;}
+    66.1%{opacity: 1;}
+}
+@keyframes kiss-m{
+    0%{opacity: 0;}
+    55%{opacity: 0;}
+    55.1%{opacity: 1;}
+    66%{opacity: 1;}
+    66.1%{opacity: 0;}
+}
+@keyframes kiss{
+    40%{transform: translate(0);}
+    50%{transform: translate(30px) rotate(20deg);}
+    60%{transform: translate(-33px);}
+    67%{transform: translate(-33px);}
+    77%{transform: translate(0);}
+} 
 @keyframes close{
     0%{transform: translate(0);}
     20%{transform: translate(20px);}
