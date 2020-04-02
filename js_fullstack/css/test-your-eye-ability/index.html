@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #page-one{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #ffc125;
+            /* 文字居中 */
+            text-align: center;
+            color: white;
+        }
+        #page-one button{
+            /* 外边框 */
+            outline: none;
+            /* transparent:透明色 */
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            background-color: #428bca;
+            width: 300px;
+            border-radius: 4px;
+        }
+        #page-two{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #page-two .block{
+            /* background-color:#dda0dd; */
+            width: 50%;
+            /* height: 20px; */
+        }
+        #page-two .block div{
+            /* 父容器有多大,自己就有多大 */
+            /* width: 100%;
+            height: 100%; */
+            /* calc:计算 */
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+        }
+    </style>
+</head>
+<body>
+    <div id="page-one">
+        <h1>辨色力测试</h1>
+        <p>找出所有不同的方块</p>
+        <button>开始挑战</button>
+    </div>
+    <div id="page-two">
+        <!-- 2 x 2 -->
+        <!-- <div class="block">1</div>
+        <div class="block">2</div>
+        <div class="block">3</div>
+        <div class="block">4</div> -->
+    </div>
+    <script>
+        const pageOne = document.querySelector('#page-one');
+        const pageTwo = document.querySelector('#page-two');
+        const startBtn = document.querySelector('#page-one button');
+        startBtn.addEventListener('click', function() {
+            // display:隐藏/显示
+            // pageOne.style.display = 'none'
+            document.body.removeChild(pageOne);
+            init();
+        })
+        let step = 1;
+        // 2 2 x 2 width:50%
+        // 3 3 x 3 width:100/3%
+        // 4 4 x 4 width:25%
+        function init() {
+            step ++;
+            // 解构
+            let [normalColor, specialColor] = getColor(step);
+            // 哪个位置给specialColor
+            // step = 2 x 2 -> 0 * 4 ~ 1 * 4
+            // Math.floor:向下取整
+            let pos = Math.floor(Math.random() * (step * step));
+            let blockWidth = 100 / step;
+            let arr = [];
+            for (let i = 0; i < step * step; i++) {
+                // 模板字符串
+                // 加#:因为颜色为16进制
+                let item = `
+                <div class="block" style="width: ${blockWidth}%; height: 100px">
+                    <div
+                    onclick="${i === pos ? 'init()' : ''}"
+                    style="background-color: #${i === pos ? specialColor : normalColor}"></div>
+                </div>
+                `
+                arr.push(item);
+            }
+            // .join('') ''代表用一个空字符串把每一项拼起来
+            pageTwo.innerHTML = arr.join('');
+        }
+        /**
+         * 根据关卡等级返回相应的一般颜色和特殊颜色
+         * @param {number} step 关卡
+         */
+        function getColor(step) {
+        let random = Math.floor(100 / step);
+        // let random = Math.floor(Math.abs(100 - 4 * step));
+        let color = randomColor(17, 255),
+            m = color.match(/[\da-z]{2}/g);
+        console.log("m", m);
+        console.log(typeof m[0]);
+        console.log("color", color);
+        for (let i = 0; i < m.length; i++) m[i] = parseInt(m[i], 16); //rgb
+        let specialColor =
+            getRandomColorNumber(m[0], random) +
+            getRandomColorNumber(m[1], random) +
+            getRandomColorNumber(m[2], random);
+        return [color, specialColor];
+        }
+
+        function getRandomColorNumber(num, random) {
+        let temp = Math.floor(num + (Math.random() < 0.5 ? -1 : 1) * random);
+        if (temp > 255) {
+            return "ff";
+        } else if (temp > 16) {
+            return temp.toString(16);
+        } else if (temp > 0) {
+            return "0" + temp.toString(16);
+        } else {
+            return "00";
+        }
+        }
+        // 随机颜色 min 大于16
+        function randomColor(min, max) {
+        var r = randomNum(min, max).toString(16);
+        var g = randomNum(min, max).toString(16);
+        var b = randomNum(min, max).toString(16);
+        return r + g + b;
+        }
+        // 随机数
+        function randomNum(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+    </script>
+</body>
+</html>
