@@ -62,6 +62,9 @@
             color: #666666;
             letter-spacing: 0.2px;
         }
+        .support{
+            color: #20B2AA;
+        }
     </style>
 </head>
 <body>
@@ -103,11 +106,18 @@
                 name: '肯德基',
                 pos: [121.474957, 31.214237],
                 per: 30,
+                star: 5,
+                score: 4.9,
+                support: 1,
+                type: '西式快餐/汉堡',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=457da7ed664046ed6980467cc0805213&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fd439b6003af33a87f6201a34c95c10385343b54a.jpg'
             },
             {
                 name: '星巴克',
                 per: 41,
+                star: 4,
+                score: 3.9,
+                type: '咖啡',
                 pos: [121.498635,31.231117],
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=b73805db1cbf5e0cef0e35b4bc8a3940&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F4bed2e738bd4b31c3ffaedb089d6277f9f2ff8f3.jpg'
             },
@@ -115,47 +125,79 @@
                 name: '1點點',
                 pos: [121.497413,31.242788],
                 per: 16,
+                star: 2,
+                score: 2.0,
+                support: 1,
+                support: 1,
+                type: '奶茶/果汁',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=833289eeccd22220912de2475d0a1e8e&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F79f0f736afc379314720137ce7c4b74543a9111e.jpg'
             },
             {
                 name: '汉堡王',
                 pos: [121.502122,31.221148],
                 per: 33,
+                star: 4,
+                score: 4.0,
+                support: 1,
+                type: '西式快餐/汉堡',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=28cc90108825ec3cd91d60b4abc4c982&wh_rate=null&src=http%3A%2F%2Ftiebapic.baidu.com%2Fforum%2Fpic%2Fitem%2Ffaf2b2119313b07e6820c86a1bd7912397dd8c37.jpg'
             },
             {
                 name: 'GANSO元祖食品',
                 pos: [121.508888,31.243602],
                 per: 100,
+                star: 3,
+                score: 3.1,
+                support: 1,
+                type: '面包蛋糕',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=731543ef9e54a88a6c7ecb67bfbef1d3&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Ff40e43a98226cffc09c912d5b6014a90f703ea45.jpg'
             },
             {
                 name: '良品铺子',
                 pos: [121.442105,31.205661],
                 per: 92,
+                star: 4,
+                score: 4.0,
+                support: 1,
+                type: '零食',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=358e624d796552177835eea128808250&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fb3de9c82d158ccbf4e07015c1ed8bc3eb1354118.jpg'
             },
             {
                 name: '三只松鼠',
                 pos: [121.485675,31.233043],
                 per: 81,
+                star: 3,
+                score: 3.0,
+                support: 1,
+                type: '零食',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=42ecb13ec2a82ebbe1012b4d6f884c8b&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fb151f8198618367a26404e7923738bd4b21ce54d.jpg'
             },
             {
                 name: '美宜佳',
                 pos: [121.469434,31.234772],
                 per: 12,
+                star: 4,
+                score: 4.0,
+                type: '超市/便利店',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=3343c10b91097cec427242c47559799d&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F4d086e061d950a7b0b836c620bd162d9f3d3c9e5.jpg'
             },
             {
                 name: '德克士',
                 pos: [121.478848,31.238909],
                 per: 25,
+                star: 2,
+                score: 2.0,
+                support: 1,
+                type: '西式快餐/汉堡',
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=3cb5410ea818c49887a63b92d1c318ec&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F4610b912c8fcc3ced5445aa19c45d688d53f209f.jpg'
             },
             {
                 name: '贡茶',
                 per: 20,
+                star: 3,
+                score: 3.1,
+                support: 1,
+                type: '奶茶/果汁',
                 pos: [121.482801,31.216244],
                 logo: 'https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=8ae315e626aa50d6564d684b690dd55c&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F58ee3d6d55fbb2fbf0b01893414a20a44723dc9c.jpg'
             }
@@ -181,12 +223,11 @@
                                 <div class="poi-name">${shops[i].name}</div>
                                 <div class="price-wrapper">
                                     <div id="stars" class="stars">
-                                        <a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>
-                                        <a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>
-                                        <a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>
-                                        <a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>
-                                        <a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>
-                                        <div class="price">人均¥${shops[i].per}</div>
+                                        ` + stars(shops[i].star) + `
+                                        <a>${shops[i].score.toFixed(1)}分</a>
+                                        <a>¥${shops[i].per}/人</a>
+                                        <div class="price">${shops[i].type}</div>
+                                        ` + supports(shops[i].support) + `
                                     </div>
                                     <div class="location">${distance}</div>
                                 </div>
@@ -203,6 +244,26 @@
                 }else{
                     return (distance/1000).toFixed(1)+"km";
                 }
+            }
+            function stars(star) {
+                let arr = [];
+                for (let i = 0; i < star; i++) {
+                    arr += `<a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516" alt=""></a>`
+                }
+                for (let i =0; i < 5 - star; i++) {
+                    arr += `<a href=""><img src="http://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/e076efca46320452.png@057a516" alt=""></a>`
+                }
+                return arr;
+            }
+            function supports(support) {
+                let arr = [];
+                if (support == 1){
+                    arr += `<div class="support">支持外卖<div>`
+                }
+                else {
+                    arr += `<div class="support">不支持外卖<div>`
+                }
+                return arr;
             }
             // map.centerAndZoom("上海书城(长宁店)",17)
             //两点距离
