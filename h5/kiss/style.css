@@ -1,3 +1,7 @@
+html{
+    /* 高斯模糊 */
+    filter: blur(2px);
+}
 body{
     background-color: #78e08f;
     margin: 0;
