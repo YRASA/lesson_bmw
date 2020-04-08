@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 使用calc */
+        /* .column{
+            float: left;
+        }
+        #center{
+            margin-left: 200px;
+            margin-right: 150px;
+            width: calc(100% - 350px);
+        } */
+        /* 使用border-box(可将center的整个盒模型宽度设置为父元素的100%宽度) */
+        /* .column{
+            float: left;
+        }
+        #center{
+            padding-left: 200px;
+            padding-right: 150px;
+            box-sizing: border-box;
+            width: 100%;
+        } */
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="center" class="column"></div>
+    <div id="left" class="column"></div>
+    <div id="right" class="column"></div>
+    <div id="footer"></div>
+</body>
+</html>
