@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .box1 {
+            padding-left: 10px;
+        }
+        .box2 {
+            box-sizing: border-box;
+            padding-left: 10px;
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            /* viewport width */
+            width: 100vw;
+            border: 10px solid red;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">content-box</div>
+    <div class="box box2">border-box</div>
+    <script>
+        const box1 = document.querySelector('.box1');
+        console.log(box1.offsetWidth, box1.offsetHeight);
+        const box2 = document.querySelector('.box2');
+        console.log(box2.offsetWidth, box2.offsetHeight);
+    </script>
+</body>
+</html>
