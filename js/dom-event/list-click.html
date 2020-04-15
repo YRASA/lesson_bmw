@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <div>
+                000
+                <span>666</span>
+            </div>
+            <div>
+                777
+            </div>
+        </li>
+        <li>22</li>
+        <li>333</li>
+        <!-- 3s后在后面插入一个li -->
+    </ul>
+    <button id="btn" onclick="">btn</button>
+    <script>
+        // 点击每一个li,输出里面的文本内容
+        // 1.常规思维(只能选中当前页面上已有的节点,后添加的节点是没有效果的)
+        // const lis = document.querySelectorAll('li');
+        // lis.forEach((li) => {
+        //     li.addEventListener('click', function() {
+        //         console.log(li.innerText);
+        //     })
+        // })
+        setTimeout(function() {
+            const ul = document.querySelector('ul');
+            // 创建li节点
+            const li = document.createElement('li');
+            li.innerHTML = '4444';
+            ul.appendChild(li);
+        }, 3000)
+        const ul = document.querySelector('ul');
+        // 借助事件冒泡特点,父节点可以监听到子节点有没有发生点击事件
+        ul.addEventListener('click', function(event) {
+            // console.log(event);
+            // event.target:点击哪里就输出哪里
+            const target = event.target;
+            console.log(target.innerText);
+        })
+        // document.querySelector('#btn').addEventListener('click', function() {
+        //     // target
+        // })
+        const btn = document.getElementById('btn');
+        // DOM0(后面的覆盖前面)
+        btn.onclick = function() {
+            console.log(0);        
+        }
+        btn.onclick = function() {
+            console.log(1);        
+        }
+        // DOM1没有事件相关修改
+        // DOM2
+        btn.addEventListener('click', () => {
+            console.log(11);
+        })
+        // DOM3(添加鼠标、键盘(按下哪个键)事件)
+        btn.addEventListener('click', () => {
+            console.log(22);
+        })
+    </script>
+</body>
+</html>

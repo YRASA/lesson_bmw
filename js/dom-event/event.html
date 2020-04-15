@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .child {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        parent
+        <div class="child">
+            child
+        </div>
+    </div>
+    <a href="./dom.html">click</a>
+    <script>
+        const parent = document.querySelector('.parent');
+        const child = document.querySelector('.child');
+        parent.addEventListener('click', () => {
+            console.log('parent clicked');
+        }, false)
+        child.addEventListener('click', (event) => {
+            // child触发click的时候为目标阶段
+            console.log('child clicked');
+            // 阻止冒泡
+            event.stopPropagation();
+        }, false)
+        // parent包含着child
+        // IE:冒泡 bubble
+        // firefox:捕获 capture
+        // w3c:capture和bubble融合
+        // document.addEventListener('click', () => {
+        //     console.log('document clicked');
+        // }, true)
+        // window.addEventListener('click', () => {
+        //     console.log('window clicked');
+        // }, {
+        //     // 在捕获阶段触发
+        //     capture:true,
+        //     // 只调用一次
+        //     once:true
+        // })
+        // 阻止默认事件,如a标签跳转
+        document.querySelector('a').addEventListener('click', function(event) {
+            event.preventDefault();
+        })
+    </script>
+</body>
+</html>
