@@ -18,10 +18,10 @@
 </head>
 <body>
     <h2 id="drag1" class="drag">h2</h2>
-    <button id="btn" class="drag">btn</button>
+    <!-- <button id="btn" class="drag">btn</button> -->
     <script>
-        const btn = document.getElementById('btn');
-        function test() {}
+        // const btn = document.getElementById('btn');
+        // function test() {}
         // btn.addEventListener('click', function() {
 
         // })
@@ -29,8 +29,8 @@
         // btn.removeEventListener('click', function() {
 
         // })
-        btn.addEventListener('click', test);
-        btn.removeEventListener('click', text);
+        // btn.addEventListener('click', test);
+        // btn.removeEventListener('click', text);
         // 按下鼠标
         // 托:transform:translate3d() || (left, top)
         // 放
@@ -45,9 +45,11 @@
             if (moveX > distanceX) {
                 moveX = distanceX;
             }
+            if (moveX < 0) moveX = 0;
             if (moveY > distanceY) {
                 moveY = distanceY;
             }
+            if (moveY < 0) moveY = 0;
             drag1.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
         }
         drag1.addEventListener('mousedown', function() {
