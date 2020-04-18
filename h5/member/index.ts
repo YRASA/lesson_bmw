@@ -44,3 +44,25 @@ tbody.innerHTML = members.map((member) => {
         </tr>
     `
 }).join("")
+const forms = document.querySelector('form');
+forms.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const id = forms.idInput.value;
+    const name = forms.nameInput.value;
+    const avatar = forms.avatarInput.value;
+    const telephone = forms.telephoneInput.value;
+    const hometown = forms.hometownInput.value;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>
+                <img src="${avatar}" />
+            </td>
+            <td>${telephone}</td>
+            <td>${hometown}</td>
+        </tr>
+    `
+    tbody.appendChild(tr);
+})
