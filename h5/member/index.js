@@ -26,3 +26,15 @@ var tbody = document.querySelector('#member tbody');
 tbody.innerHTML = members.map(function (member) {
     return "\n        <tr>\n            <td>" + member.id + "</td>\n            <td>" + member.name + "</td>\n            <td>\n                <img src=\"" + member.avatar + "\" />\n            </td>\n            <td>" + member.telephone + "</td>\n            <td>" + member.hometown + "</td>\n        </tr>\n    ";
 }).join("");
+var forms = document.querySelector('form');
+forms.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var id = forms.idInput.value;
+    var name = forms.nameInput.value;
+    var avatar = forms.avatarInput.value;
+    var telephone = forms.telephoneInput.value;
+    var hometown = forms.hometownInput.value;
+    var tr = document.createElement('tr');
+    tr.innerHTML = "\n        <tr>\n            <td>" + id + "</td>\n            <td>" + name + "</td>\n            <td>\n                <img src=\"" + avatar + "\" />\n            </td>\n            <td>" + telephone + "</td>\n            <td>" + hometown + "</td>\n        </tr>\n    ";
+    tbody.appendChild(tr);
+});
