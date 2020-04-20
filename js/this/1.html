@@ -1,0 +1,72 @@
+<button id="btn">btn</button>
+<script>
+    const btn = document.getElementById('btn');
+    function onClick() {
+        // console.log('调用了');
+        console.log(this);
+        // 指向obj
+        console.log(this.a);
+    }
+    // click 运行的时候决定，addEventListener会调用你
+    // addEventListener 回调里面的this绑定为我们点击的元素
+    btn.addEventListener('click', function() {
+        // this === btn
+        onClick.call(obj);
+    });
+    // 不能加()，已经掉哦用了
+    // btn.addEventListener('click', onClick.call(obj));
+    let obj = {
+        name: 'name',
+        a: 'obj a'
+    }
+    // let定义的不在window上面,但是是全局变量
+    var a = 'global variable';
+    function foo(b, c) {
+        // this === window
+        console.log(this);
+        console.log(this.a + b + c);
+    }
+    // document.createElement('div');
+    // fetch('https://www.baiu.com')
+    // 运行的时候 this
+    // foo();
+    // call的第一个参数可指定函数调用时需要的this,之后为形参
+    // foo.call(window, ' b', 'c variable');
+    // foo.call(obj, ' b', 'c variable');
+    // apply第一个参数和call一样，往后的参数为数组形式
+    foo.apply(obj, [' b', 'c variable']);
+</script>
+<script>
+    console.log(a);
+</script>
+<script>
+    let obj1 = {
+        a: 1,
+        say: function() {
+            console.log(this.a);
+        }
+    }
+    let obj2 = {
+        a: 2,
+        say1: function() {
+            obj1.say();
+        }
+    }
+    obj1.say.call(obj2);
+    obj1.say();
+    console.log(obj1.say);
+    let test = obj1.say;
+    test();
+    // var 没有块级({})作用域,let有
+    // var定义的全局变量和平常用到的一些顶层方法(setTimeout..document)都在window下面
+    {
+        // 块级({})作用域只在块里生效
+        var block1 = 123;
+    }
+    console.log(block1);
+    {
+        let block2 = 123;
+    }
+    // console.log(block2);
+    obj2.say1();
+</script>
