@@ -49,7 +49,11 @@
     let obj2 = {
         a: 2,
         say1: function() {
-            obj1.say();
+            // obj1里的say的this和obj2里say1的this无关
+            // 跟调用所处的环境无关
+            // 只跟最终调用方式有关
+            // obj1.say();
+            obj1.say.call(this);
         }
     }
     obj1.say.call(obj2);
