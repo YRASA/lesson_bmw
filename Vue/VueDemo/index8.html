@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button-counter title="title1 : " @clicknow="clicknow">
+            <h2>Hi...h2</h2>
+        </button-counter>
+        <button-counter title="title2 : "></button-counter>
+    </div>
+    <script type="text/javascript">
+        Vue.component('button-counter', {
+            props: ['title'],
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            template: '<div><h1>Hi...</h1><button v-on:click="clickfun">{{title}} You clicked me {{ count }} times.</button><slot></slot></div>',
+            methods:{
+                clickfun: function() {
+                    this.count++;
+                    // $emit触发
+                    this.$emit('clicknow', this.count);
+                }
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            methods:{
+                clicknow: function(e) {
+                    console.log(e);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
