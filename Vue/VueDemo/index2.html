@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{a}}-{{b}}
+    </div>
+    <script type="text/javascript">
+        let data = { a : 1 ,
+                     b : 2};
+        // Object.freeze(data);
+        let vm = new Vue({
+            el: '#app',
+            data: data
+        });
+        // 监听要放在之前
+        vm.$watch('a', function(newVal, oldVal){
+            console.log(newVal, oldVal);
+        });
+        data.a = 2;
+        vm.a = 3;
+        vm.$data.a = 4;
+    </script>
+</body>
+
+</html>

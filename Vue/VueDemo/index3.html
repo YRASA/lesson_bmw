@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hi vue',
+            },
+            // 生命周期函数不能使用箭头函数(没有this)
+            // 在实例初始化后，数据观测(data observer)和event/watcher事件配置之前被调用
+            beforeCreate: function() {
+                console.log('beforeCreate');
+            },
+            // 在实例创建完成后立即被调用
+            // 在这一步，实力已完成以下配置:数据观测(data observer)，属性和方法的运算，watch/event事件回调
+            // 然而挂载阶段还没开始，$el属性目前不可见
+            create: function() {
+                console.log('create');
+            },
+            // 在挂载开始之前被调用，相关的渲染函数首次被调用
+            beforeMount: function() {
+                console.log('beforeMount');
+            },
+            // el被新创建的vm.$el替换，挂载成功
+            mounted: function() {
+                console.log('mounted');
+            },
+            // 数据更新时调用
+            beforeUpdate: function() {
+                console.log('beforeUpdate');
+            },
+            // 组件DOM已经更新，组件更新完毕
+            updated: function() {
+                console.log(updated);
+            },
+        });
+        setTimeout(function() {
+            vm.msg = "change......";
+        }, 3000);
+    </script>
+</body>
+
+</html>

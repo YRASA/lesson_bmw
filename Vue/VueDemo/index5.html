@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+        <h1 v-show='ok'>Hello!</h1>
+    </div>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                type: "",
+                ok: false
+            }
+        });
+    </script>
+</body>
+
+</html>
