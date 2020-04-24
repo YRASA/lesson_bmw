@@ -1,0 +1,63 @@
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    function Person() {
+        // 静态方法(不需要实例化就可以调用)
+        // TS: static
+        Person.from = function() {
+            console.log('person')
+        }
+        Person.prototype.forEach = function() {
+            console.log('循环')
+        }
+    }
+    // 实例 对象
+    let brother = new Person();
+    brother.forEach();
+    Person.from();
+    // 类似数组的对象
+    // 1.可以和数组一样,用数组[i]取值
+    // 2.length
+    // 3.不全是数组
+    // 比如:arguments, NodeList(querySelectorAll)
+    const lis = document.querySelectorAll('li');
+    // console.log(lis.map());
+    // lis.map(function() {})
+    Array.prototype.map.call(lis, function(liNode) {
+        console.log(liNode);
+    })
+    // 实例
+    let arr = [0, 1];
+    // 需要参数
+    arr.forEach(function(num) {
+
+    })
+    function sum(a, b) {
+        // 参数个数不确定
+        console.log(arguments[0], arguments);
+        // forEach
+        let sum = 0;
+        // 只有数组才有forEach(Array.prototype.forEach)
+        // 1.借用一下,考虑this
+        Array.prototype.forEach.call(arguments, function(num) {
+            console.log(num);
+        });
+        // 2.Array.from()方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数据实例
+        const arr = Array.from(arguments);
+        arr.forEach(function(num) {
+            console.log(num);
+        })
+        // arguments.forEach本意:forEach内部this指向arguments
+        // arguments.forEach(num => {
+        //     sum += sun;
+        // });
+        // console.log(sum);
+    }
+    sum(0, 1, 2, 3, 4, 5)
+    console.log(Math.max(1, 2, 3, 4, 5));
+    // Array.from 静态方法
+    // Array.prototype.forEach
+</script>
