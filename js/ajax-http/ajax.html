@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="input" id="input" placeholder="search" />
+    <button id="btn">search</button>
+    <ul id="songs">
+
+    </ul>
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function () {
+            // 输入框内容
+            const val = document.getElementById('input').value;
+            // ajax
+            // button通过一个ajax或http请求与后端交互
+            // 
+            const xhr = new XMLHttpRequest();
+            // open向后端要数据 url
+            // 第三个参数:false同步,true异步
+            // get:通过url的形式把数据传给后端
+            xhr.open('get', `http://neteasecloudmusicapi.zhaoboy.com/search?keywords=${val}`, true)
+            // 异步:拿到资源再回调
+            // 同步:拿到资源才往下执行
+            // js 单线程:无阻塞
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState, xhr.response);
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let res = JSON.parse(xhr.response);
+                    console.log(res);
+                    // 渲染页面
+                    document.getElementById('songs').innerHTML = res.result
+                    .songs.map(function(song) {
+                        // 解构
+                        let { artists } = song;
+                        let singers = artists.map(function(artist) {
+                            return artist.name
+                        }).join('/');
+                        return `
+                        <li>
+                            ${song.name} singer:${singers} album:${song.album.name}
+                        </li>
+                        `
+                    }).join('');
+                }
+            }
+            xhr.send();
+            console.log(xhr.response);
+            // 异步马上执行后面代码,无阻塞
+            console.log(123);
+        })
+    </script>
+</body>
+
+</html>
