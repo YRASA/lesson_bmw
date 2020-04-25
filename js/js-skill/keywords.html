@@ -1,0 +1,30 @@
+<script>
+    function test(a, b) {
+        if(!a || !b) {
+            return ;
+        }
+        // 0 ~ 9
+        for (let i = 0; i < 10; i++) {
+            console.log("#", i);
+            if (i > 5) {
+                // return ; // => undefined
+                // break;
+                continue;
+            }
+            console.log(i);
+        }
+        return 'test';
+    }
+    let res = test(1, 2);
+    console.log(res);
+    console.log('--------------');
+    // let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // arr.forEach(function(num) {
+    //     console.log("*", num);
+    //     // 不会让整个for终止
+    //     if (num>5) return;
+    //     console.log(num);
+    // })
+    let a = {a : 1};
+    let b = {...a};
+</script>

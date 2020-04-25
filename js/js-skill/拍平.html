@@ -1,0 +1,25 @@
+<script>
+    // let arr = [1, 2];
+    // let arr = [1, 2, 3, [4]];
+    let arr = [1, [2, [3, [4, [5]]]]];
+    // if array
+    // 把数组里的东西提出来
+    // [1, 2, 3, 4， 5]
+    // flat
+    // [1, 2, 3, 4]
+    function flat(arr) {
+        let res = [];
+        for (let i = 0; i < arr.length; i++) {
+            let ele = arr[i];
+            // ele必须是基本数据类型
+            if(Array.isArray(ele)) {
+                res = res.concat(flat(ele));
+            }
+            else {
+                res = res.concat(ele);
+            }
+        }
+        return res;
+    }
+    console.log(flat(arr));
+</script>
