@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 状态 语义化 -->
+    <!-- 挂载点 -->
+    <div class="wrapper">
+        <!-- <button class="like-btn">
+            <span class="like-text">点赞</span>
+        </button> -->
+    </div>
+    <script>
+        // const button = document.querySelector('.like-btn');
+        // const buttonText = document.querySelector('.like-text');
+        // let isLiked = false;
+        // button.addEventListener('click', () => {
+        //     isLiked = !isLiked;
+        //     if (isLiked) {
+        //         buttonText.innerHTML = '取消';
+        //     }
+        //     else {
+        //         buttonText.innerHTML = '点赞';
+        //     }
+        // }, false)
+        // 封装
+        // 1.html str``添加到页面
+        // 2.还要在它上面添加事件
+        const createDOMFronString = (domString) => {
+            const oDiv = document.createElement('div');
+            oDiv.innerHTML = domString;
+            return oDiv;
+        }
+        class LikeButton {
+            constructor() {
+                this.state = {
+                    isLiked:false
+                }
+            }
+            render() {
+                // 事件监听
+                this.el = createDOMFronString(`
+                    <button id = 'like-btn'>
+                        <span class = 'like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
+                    </button>
+                `)
+                // changeLikeText放到外面写是一种优化,有利于代码的职责分离
+                this.el.addEventListener('click', this.changeLikeText.bind(this), false)
+                return this.el;
+            }
+            // 一个方法只做一个事情
+            changeLikeText() {
+                this.state.isLiked = !this.state.isLiked;
+                const likeText = this.el.querySelector('.like-text');
+                likeText.innerHTML = this.state.isLiked ? '取消' : '点赞';
+            }
+        }
+        // 流程性代码 点赞通用组件 不方便复用 封装
+        const wrapper = document.querySelector('.wrapper');
+        const likeButton = new LikeButton();
+        wrapper.appendChild(likeButton.render());
+        // 复用
+        // const likeButton2 = new LikeButton();
+        // wrapper.innerHTML += likeButton2.render();
+    </script>
+</body>
+</html>

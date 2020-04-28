@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append child DOM API</title>
+</head>
+<body>
+    <ul id="students"></ul>
+    <script>
+        const students = [{
+            id: 1,
+            name: '阿斯弗',
+            github: 'https://github.com/YRASA'
+        },
+        {
+            id: 2,
+            name: '山姆',
+            github: 'https://github.com/YRASA'
+        },
+        {
+            id: 3,
+            name: '撒旦',
+            github: 'https://github.com/YRASA'
+        }]
+        // students append #root
+        // arr -> map -> html arr -> join -> url
+        // innerHTML/appendChild
+        const oUL = document.getElementById('students');
+        oUL.addEventListener('click', function() {
+            // alert('sad');
+        })
+        oUL.style.fontSize = '20px';
+        // console.log(oLi.nodeType);
+        // console.log(oText.nodeType);
+        // 节点树
+        const fragment = document.createDocumentFragment(); // 垫片 文档碎片
+        for (let student of students) {
+            const oLi = document.createElement('li');
+            oLi.className = 'item';
+            const oA = document.createElement('a');
+            oA.setAttribute('href', student.github);
+            oA.setAttribute('target', "_blank");
+            const oText = document.createTextNode(student.name);
+            // oLi.appendChild(oText);
+            oA.appendChild(oText);
+            // oA.addEventListener('click', function(event) {
+            //     event.preventDefault();
+            //     alert(this.innerText);
+            // }, false);
+            oLi.appendChild(oA);
+            fragment.appendChild(oLi); // 内存中,只有一次刷新
+            // oUL.appendChild(oLi); // 性能问题 页面的3次重新绘制和刷新 appendChild li -> ul
+            // js DOM 操作 性能操作比较大
+        }
+        oUL.appendChild(fragment); // 一次性加入所有节点
+        
+        const studentLis = document.querySelectorAll('.item');
+        // console.log(studentLis);
+        studentLis.forEach((li, index) => {
+            // console.log(li);
+            let oA = li.querySelector('a');
+            console.log(oA);
+            const oSpan = document.createElement('span');
+            oSpan.appendChild(document.createTextNode(students[index].id));
+            li.insertBefore(oSpan, oA);
+        })
+        // studentLis是伪数组 for forEach length 下标访问 仅此而已
+        // 伪数组 变成 真数组
+        // console.log(studentLis[0].childNodes[0].innerText);
+        // console.log([...studentLis].filter(li => {
+        //     return li.childNodes[0].innerText == '阿斯弗';
+        // }))
+    </script>
+</body>
+</html>
