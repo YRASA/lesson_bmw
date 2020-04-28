@@ -21,23 +21,25 @@
         class LikeButton {
             constructor() {
                 //申明属性
-                this.state = { // JSON
-                    isLiked: false // bool
-                }
+                // this.state = { // JSON
+                //     isLiked: false // bool
+                // }
+                this.state = 0
             }
             render() {
                 this.el = createDOMFronString(`
                     <button id = 'like-btn'>
-                        <span class = 'like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
+                        <span class = 'like-text'>${this.state+'点赞'}</span>
                     </button>
                 `);
                 this.el.addEventListener('click', this.changeLikeText.bind(this), false);
                 return this.el;
             }
             changeLikeText() {
-                this.setState({
-                    isLiked: !this.state.isLiked
-                })
+                // this.setState({
+                //     isLiked: !this.state.isLiked
+                // })
+                this.setState(this.state += 1)
             }
             // 状态函数
             setState(state) {
