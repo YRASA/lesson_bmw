@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cicle {
+            border: 1px solid #000;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        #combine {
+            border: 1px solid #000;
+        }
+        .btn {
+            outline: none;
+            background-color: blue;
+        }
+        /* cicle mouseenter */
+    </style>
+</head>
+<body>
+    <input type="text" id="text" />
+    <input type="file" id="file" hidden/>
+    <button class="btn">文件上传</button>
+    <div class="cicle"></div>
+    <img src="" alt="" id="preview" hidden>
+    <img src="./icon.png" alt="" id="flag" hidden>
+    <!-- 纯空白画布,没有css -->
+    <canvas id="combine" width="290px" height="290px"></canvas>
+    <!-- onchange -->
+    <script>
+        const fileNode = document.getElementById('file');
+        const combine = document.getElementById('combine');
+        const ctx = combine.getContext('2d');
+
+        fileNode.addEventListener('change', function(event) {
+            // 谁触发了事件,event.target就指向谁
+            console.log(event.target === fileNode, event.target === this);
+            let file = event.target.files[0];
+            console.log(file);
+            // 2进制 => base64(编码):a-z A-Z 0-9
+            // unicode: utf-8 utf-16
+            let fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                console.log(e.target === fileReader);
+                console.log(e.target.result);
+                document.getElementById('preview').src = e.target.result;
+                // 刚把src属性加上去,就立即调用，可能图片还没加载完毕 异步
+                document.getElementById('preview').onload = function() {
+                    ctx.drawImage(document.getElementById('preview'), 0, 0, 290, 290);
+                    ctx.drawImage(document.getElementById('flag'), 0, 0, 290, 290);
+                }
+            }
+            fileReader.readAsDataURL(file);
+        })
+        document.querySelector('.btn').addEventListener('click', function() {
+            fileNode.click();
+        })
+    </script>
+</body>
+</html>
