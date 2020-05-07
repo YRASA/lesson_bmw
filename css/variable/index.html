@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* css 4 引入了variable */
+        /* 360面底层以及最新技术点,并能深入实验 */
+        :root {
+            /* 它的值可以复用 */
+            --bgcolor: blue;
+            --color: red;
+        }
+        p {
+            /* var 使用变量 */
+            color: var(--color);
+        }
+        div {
+            background-color: var(--bgcolor);
+            color: var(--color);
+        }
+    </style>
+</head>
+<body>
+    <p>abcdef</p>
+    <div>123456</div>
+</body>
+</html>

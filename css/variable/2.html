@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./box.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --base-size: 10;
+            --bg-color: green;
+        }
+        .box {
+            /* 占据90% -10px 宽 */
+            /* width: calc(90% - 10px);
+            height: 100px;
+            background-color: var(--bg-color); */
+            width: calc(var(--base-size) * 10px);
+            height: calc(var(--base-size) * 5px);
+            background-color: var(--bg-color);
+            padding: calc(var(--base-size) * 1px);
+        }
+        @media (max-width: 480px) {
+            :root {
+                --base-size: 8;
+            }
+        }
+        @media only screen and (min-width: 1200px) {
+            .box {
+                --base-size: 20;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
