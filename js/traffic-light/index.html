@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            width: 100px;
+            height: 100px;
+            background-color: #666;
+            border-radius: 50%;
+            margin-top: 100px;
+        }
+
+        ul.stop li:nth-child(1) {
+            background-color: red;
+        }
+
+        ul.warn li:nth-child(2) {
+            background-color: yellow;
+        }
+
+        ul.pass li:nth-child(3) {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul');
+        // setTimeout(() => {
+        //     ul.className = 'stop';
+        //     setTimeout(() => {
+        //         ul.className = 'warn';
+        //         setTimeout(() => {
+        //             ul.className = 'pass';
+        //             setTimeout(() => {
+        //                 ul.className = 'stop';
+        //             }, 2000)
+        //         }, 1000)
+        //     }, 1000)
+        // }, 1000)
+        // // Promise
+        // // 异步
+        // // 成功or失败
+        // // 1.回调
+        // setTimeout(() => {
+
+        // }, 1000)
+        // Promise是一个类(有三个状态)
+        // let p = new Promise(function(resolve, reject) {
+        //     setTimeout(() => {
+        //         resolve(); 
+        //         // 成功 fulfilled(如果调用resolve)
+        //         // 失败 rejected(如果调用reject)
+        //         // 处理中 pending(默认)
+        //     }, 1000)
+        // })
+        let p = function(time) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(() => {
+                    resolve();
+                }, time);
+            })
+        }
+        // 成功之后
+        // p指向了同一个Promise,1s后为fulfilled,所以then没有等待1s的效果,而是立即执行
+        // p变成函数后每调用一次都会返回一个不同的Promise
+        setInterval(() => {
+            light();
+        }, 6000)
+        light();
+        function light() {
+            p(1000).then(function() {
+            ul.className = 'stop';
+            // 如果返回一个Promise,则可在后面链式调用then,然后等待Promise是成功还是失败
+            return p(2000);
+        })
+        .then(function() {
+            // 等待上一步的结果
+            ul.className = 'warn';
+            return p(3000);
+        })
+        .then(function() {
+            // 等待上一步的结果
+            ul.className = 'pass';
+        });
+        // then串行结构
+        }
+        // 失败之后
+        p().catch();
+    </script>
+</body>
+
+</html>
