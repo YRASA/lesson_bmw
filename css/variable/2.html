@@ -24,14 +24,23 @@
             background-color: var(--bg-color);
             padding: calc(var(--base-size) * 1px);
         }
+        /* 竖屏480手机 ipad:1024X768 PC:1100+ 巨屏:1400+ */
+        /* 最大宽度480px */
         @media (max-width: 480px) {
             :root {
                 --base-size: 8;
             }
         }
+        /* @media 媒体查询(上网媒介) only screen 选中带有屏幕的设备 */
         @media only screen and (min-width: 1200px) {
             .box {
                 --base-size: 20;
+            }
+        }
+        /* ipad放大15倍 */
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .box {
+                --base-size: 15;
             }
         }
     </style>
