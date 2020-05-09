@@ -45,3 +45,8 @@ html document 关系:
 
   什么api可以把所有的css都查询出来
   document.styleSheets
+
+  查询url:
+    document.url
+    windows.location.href
+    location.href
