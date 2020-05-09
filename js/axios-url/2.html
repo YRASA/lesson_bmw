@@ -3,7 +3,7 @@
     // 2.传递数组 传递不合法值
     // 3.#后的内容是不会传递给后端的 如果url里存在# 要把#后的内容丢掉
     // 传输的每个设备编码的规则不一样
-    // 浏览器自动编码 node不会编码
+    // 浏览器会自动编码而node不会自动编码
     function encode(str) {
         // js内置方法
         return encodeURIComponent(str)
