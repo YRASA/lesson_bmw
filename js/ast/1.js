@@ -1,4 +1,4 @@
-{/* <div id="root">
+{/* <div id="root" class="wrap">
   <span class="demo">
     This is a span.
   </span>
@@ -26,7 +26,7 @@ let dom = {
                 // createTextNode()
                 // createElement()
                 {
-                    tag: indefined,
+                    tag: undefined,
                     text: 'This is a span.'
                 }
             ]
