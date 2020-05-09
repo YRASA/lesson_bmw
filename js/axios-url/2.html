@@ -1,0 +1,62 @@
+<script>
+    // 1.key value 编码一下 安全性 特殊字符对后端的sql有威胁性
+    // 2.传递数组 传递不合法值
+    // 3.#后的内容是不会传递给后端的 如果url里存在# 要把#后的内容丢掉
+    // 传输的每个设备编码的规则不一样
+    // 浏览器自动编码 node不会编码
+    function encode(str) {
+        // js内置方法
+        return encodeURIComponent(str)
+        .replace('%5B', '[')
+        .replace('%5D', ']');
+    }
+    function buildUrl(url, params) {
+        let parts = [];
+        Object.keys(params).forEach(function(key) {
+            let value = params[key];
+            if (value === null || typeof value === 'undefined') {
+                return;
+            }
+            if (Array.isArray(value)) {
+                key += '[]';
+                // key = c[]
+                // c: [1, 2, 3] => c[]=1&c[]=2&c[]=3
+            }
+            else {
+                // c: 123
+                // 统一为数组
+                // key = c
+                value = [value];
+            }
+            console.log(key, value);
+            // 循环
+            value.forEach(val => {
+                let part = `${encode(key)}=${encode(val)}`
+                parts.push(part)
+            })
+            // console.log(part);
+        });
+        // & join
+        let serializedParams = parts.join('&');
+        if (serializedParams) {
+            const hashIndex = url.indexOf('#');
+            // 存在返回位置,不存在返回-1
+            if (hashIndex !== -1) {
+                // 找到了#的位置 从0~#位置截取下来
+                url = url.slice(0, hashIndex);
+            }
+            url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+        }
+        return url;
+    }
+    let url = buildUrl('http://neteasecloudmusicapi.zhaoboy.com/search?a=1#header', {
+        keywords: '周杰伦',
+        type: 'all',
+        query: 'js',
+        a: null,
+        b: undefined,
+        c: [1, 2, 3],
+        d: 123
+    })
+    console.log(url);
+</script>

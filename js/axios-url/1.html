@@ -1,0 +1,29 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // http://neteasecloudmusicapi.zhaoboy.com/search?keywords=Aimer
+    // 1.原生:手动拼接
+    // 2.axios:对象(灵活)
+    // axios第三方基于XMLhttprequest的库
+    // fetch 浏览器原生实现 发请求的api(不是基于XMLhttprequest)
+    let params = {
+        query: 'js',
+        type: 'all'
+    };
+    params.user = 'xxx';
+    delete params.query;
+    let obj = {
+        keywords: 'Aimer'
+    };
+    axios({
+        method: 'get',
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/search',
+        params: {
+            keywords: obj
+        }
+    })
+    .then(function(res) {
+        console.log(res);
+    })
+    // 把对象每一项key value按照url规则拼接到url
+
+</script>
