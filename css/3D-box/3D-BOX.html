@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-BOX</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    div {
+        text-align: center;
+    }
+    html {
+            background-color: #414859;
+        }
+    body {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .box {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50px;
+        top: 60px;
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg) rotateY(-40deg);
+    }
+    .side {
+        position: absolute;
+        border: black solid 1px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #3f515f;
+    }
+    .box-wrapper {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        margin-left: 39%;
+        margin-top: 24%;
+    }
+    .box .front {
+        transform: translateZ(50px);
+        background-color: #0390A1;
+    }
+    .box .back {
+        transform: translateZ(-50px);
+        background-color: #0390A1;
+    }
+    .box .left {
+        transform: rotateY(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    .box .right {
+        background-color: #0390A1;
+        transform: rotateY(90deg) translateZ(50px);
+    }
+    .box .bottom {
+        transform: rotateX(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    .box .top {
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) translateZ(50px);
+    }
+    .left-page {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        transform-origin: 50% 0%;
+        transform: translateY(50px) translateX(-50px) rotateY(180deg) rotateZ(90deg);
+        background-color: #0390A1;
+        animation: left 0.3s linear forwards;
+    }
+    .right-page {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        background-color: #0390A1;
+        transform-origin: 50% 0%;
+        transform: translateY(50px) translateX(50px) rotateY(0deg) rotateZ(90deg);
+        animation: right 0.3s linear forwards;
+    }
+    @keyframes left {
+        0% {
+            transform: translateY(50px) translateX(-50px) rotateY(180deg) rotateZ(90deg);
+        }
+        100% {
+            transform: translateY(50px) translateX(-50px) rotateY(54deg) rotateZ(90deg);
+        }
+    }
+    @keyframes right {
+        0% {
+            transform: translateY(50px) translateX(50px) rotateY(0deg) rotateZ(90deg);
+        }
+        100% {
+            transform: translateY(50px) translateX(50px) rotateY(126deg) rotateZ(90deg);
+        }
+    }
+</style>
+<body>
+    <div class="box-wrapper">
+        <div class="box">
+            <div class="side front"><br><br>FRONT</div>
+            <div class="side back"></div>
+            <div class="side left"></div>
+            <div class="side right"><br><br>RIGHT</div>
+            <div class="side bottom"></div>
+            <div class="side top">
+                <div class="left-page"></div>
+                <div class="right-page"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
