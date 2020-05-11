@@ -1,0 +1,15 @@
+{
+  "name": "node-stream",
+  "version": "1.0.0",
+  "description": "linux\r cat 读文件\r grep 文本查找\r 管道 |",
+  "main": "copy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
