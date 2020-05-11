@@ -30,5 +30,5 @@ function copy(sourceUrl, destUrl) {
 // 高并发
 
 // 后端: baidu.com 1台服务器(linux电脑) 处理多人请求
-// 内存占用过多 baidu,com 卡 所有人都卡
+// 内存占用过多 baidu.com 卡 所有人都卡
 copy('./readme.md', './copy.md');
