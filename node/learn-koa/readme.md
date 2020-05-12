@@ -19,3 +19,19 @@
         GET / template.html
     - 服务器接收到请求信息后,读取对应的HTML文件,并将数据以ASCII的格式返回给浏览器
     - 断开连接
+
+ctx.req ctx.res
+请求头 响应头
+req和res的关系:
+n : 1
+n大:高并发 node天生适合高并发(异步)
+异步:createServer I/O file 数据库
+php(同步 阻塞)
+Go 多核计算
+
+http网络通信协议 TCP/IP 7层
+流动 node 流
+建立一个通信管道(传输控制协议), stream
+GET / 请求行
+关闭断开连接 所以http可服务于更多用户
+释放服务器的内存
