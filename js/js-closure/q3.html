@@ -1,0 +1,35 @@
+<script>
+    // 1. let
+    // 2. 借助函数作用域这一特点: 每次生成的i都是不一样的
+    // 3. 变种 显式声明了log函数
+    for (i = 1; i <= 5; i++) {
+    // 1 -> 6
+    // console.log(i);
+    // 5次函数调用 每个函数的i都是不一样的
+    // log(i);
+    // 匿名函数
+    // () 定义 () 调用
+    // 定义的同时就调用 立即执函数 IIFE
+    (function (i) {
+        setTimeout(function timer() {
+            // i : 1 2 3 4 5
+            // 6 i <= 5 => false 循环退出
+            console.log(i); // 输出5个6
+        },1000);
+    })(i)
+    // setTimeout(function timer() {
+    //     // i : 1 2 3 4 5
+    //     // 6 i <= 5 => false 循环退出
+    //   console.log(i); // 输出5个6
+    // },1000);
+    // 异步代码 1s
+    // 1s -> 输出 i -> 早已变成 -> 6
+  }
+//   function log(i) {
+//     setTimeout(function timer() {
+//         // i : 1 2 3 4 5
+//         // 6 i <= 5 => false 循环退出
+//       console.log(i); // 输出5个6
+//     },1000);
+//   }
+</script>
