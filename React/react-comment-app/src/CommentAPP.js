@@ -6,11 +6,14 @@ import CommentList from './CommentList'
 class CommentAPP extends Component {
     render() { // 接口
         return (
-            <div>
-                <CommentInput />
+            <div className="wrapper">
+                <CommentInput onSubmit={this.handleSubmitComment.bind(this)}/>
                 <CommentList />
             </div>
         )
+    }
+    handleSubmitComment(comment) {
+        console.log(comment);
     }
 }
 export default CommentAPP;
