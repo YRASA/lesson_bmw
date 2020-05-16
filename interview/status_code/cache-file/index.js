@@ -15,8 +15,8 @@ http.createServer((req, res) => {
     // 3.怎么告诉浏览器直接使用缓存的数据
     let stat = fs.statSync('./a.txt'); // 同步 阻塞
     if (req.headers['if-modified-since']) {
-        console.log(typeof req.headers['if-modified-since']);
-        console.log(typeof stat.mtime);
+        // console.log(typeof req.headers['if-modified-since']);
+        // console.log(typeof stat.mtime);
         // 前者为string,后者为object,所以不能用'==='
         if (req.headers['if-modified-since'] == stat.mtime) {
             res.statusCode = 304;
