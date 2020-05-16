@@ -4,7 +4,7 @@ const users = require('./users.json');
 // console.log(users);
 let version = 1;
 let server = http.createServer((req, res) => {
-    // 用Etag做缓存(类型版本号)
+    // 用Etag做缓存(类似版本号)
     // If-None-Match
     if (req.url == '/') {
         res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
