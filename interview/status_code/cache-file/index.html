@@ -14,28 +14,31 @@
             // console.log('localStorage');
             const usersUL = document.getElementById('users');
             // JSON.parse:转换成json object
-            const users = JSON.parse(localStorage.getItem('users'));
+            const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
             // 但是服务器端内容改变了怎么办?
+            const version = localStorage.getItem('version');
             if (users) {
-                console.log('已经缓存了');
-                usersUL.innerHTML = users.map(user => `
-                    <li>
-                        ${user.username} - ${user.hometown}
-                    </li>
-                `).join('');
-                return;
+                showUsers(users);
             }
             fetch('/users')
                 .then(data => data.json())
                 .then(data => {
-                    // JSON.stringify:转换成json
-                    localStorage.setItem('users', JSON.stringify(data));
-                    usersUL.innerHTML = data.map(user => `
-                    <li>
-                        ${user.username} - ${user.hometown}
-                    </li>
-                `).join('');
+                    if (data) {
+                        console.log(data);
+                        showUsers(data.users);
+                        if (version != data.version) { // 无论200  304 都会有data
+                            localStorage.setItem('version', JSON.stringify(data.version));
+                            localStorage.setItem('users', JSON.stringify(data.users));
+                        }
+                    }
                 })
+                function showUsers(users) {
+                    usersUL.innerHTML = users.map(user => `
+                        <li>
+                            ${user.username} - ${user.hometown}
+                        </li>
+                    `)
+                }
         }
     </script>
 </body>
