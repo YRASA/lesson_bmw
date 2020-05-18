@@ -29,15 +29,12 @@ class App extends React.Component {
       lists: [] // 文章列表
     }
   }
-  // 生命周期
-  // App 被 reactDom 渲染到 pc 上
-  // 渲染: 一套流程(生命周期)
   handleGetPost = () => {
     const { tab } = this.state;
     axios({
       url: 'https://cnodejs.org/api/v1/topics',
       params: {
-        // 渲染传chotent 后端传param
+        // 渲染传content 后端传param
         tab: tab,
         page: 1,
         limit: 40
@@ -57,6 +54,9 @@ class App extends React.Component {
       })
     })
   }
+  // 生命周期
+  // App 被 reactDom 渲染到 pc 上
+  // 渲染: 一套流程(生命周期)
   componentDidMount() {
     // 总数/40 = 总页数
     this.handleGetPost()
@@ -102,7 +102,7 @@ class App extends React.Component {
         <input type="text" placeholder="123" defaultValue={value}
         id="name" />
         {/* &&： 第一个成立  第二个也要成立 */}
-        {/* || : 第一个成立就执行第一个 不然就执行第二个 */}
+        {/* || : 第一个成立就只执行第一个 不然就执行第二个 */}
         {/* react 不渲染那些值为 空数组 false null undefined 的内容 */}
         {isLoading && '正在加载中...'}
         { lists.length === 0 && '暂无文章请重试' }
