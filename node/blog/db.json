@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Fireflies1",
+      "content": "My fancies are fireflies, Specks of living light, twinkling in the dark.",
+      "author": 1
+    },
+    {
+      "id": 2,
+      "title": "Fireflies2",
+      "content": "The voice of wayside pansies, that do not attract the careless glance, murmurs in these desultory lines.",
+      "author": 2
+    },
+    {
+      "id": "3",
+      "title": "Fireflies3",
+      "content": "In the drowsy dark caves of the mind, dreams build their with fragments, dropped from day's caravan.",
+      "author": "3"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Tagore"
+    },
+    {
+      "id": 2,
+      "name": "Tagore"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "author": 2,
+      "content": "good"
+    },
+    {
+      "id": 2,
+      "postId": 2,
+      "author": 1,
+      "content": "bad"
+    }
+  ]
+}
