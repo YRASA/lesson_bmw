@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search" />
+    <input type="text" id="search1" />
+    <input type="text" id="search2" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+        const search = document.getElementById('search');
+        let timeout;
+        function handlesearch(event) {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(() => {
+                console.log(event.target.value);
+            }, 200)
+            // jay 这个词
+            // j ja jay 三次请求
+            // 等用户输入jay完毕 再去请求
+
+            // 这种就叫防抖
+            // j
+            // a
+            // y
+            // 用户连续输入就会连续触发input, 处于输入中,没必要请求
+            // 输入完之后input不触发了, 等1000ms之后用户不触发input 输完了之后请求
+            // 等 100ms
+            // fetch axios xhr
+        }
+        // setTimeout
+        // onChange
+        search.addEventListener('input', handlesearch);
+        // let timeout1;
+        let handlemousemove = function() {
+            // if (timeout1) clearTimeout(timeout1);
+            // timeout1 = setTimeout(() => {
+                console.log('handlemousemove');
+            // }, 600);
+        }
+        // _: debounce暴露出来的对象
+        // lodash API
+        let hasDebounceedMove = _.debounce(handlemousemove, 600);
+        window.addEventListener('mousemove', hasDebounceedMove);
+        // 封装防抖
+        // 普通函数this: 调用的时候确定
+        // 箭头函数this: 书写的时候确定
+        const search1 = document.getElementById('search1');
+        search1.addEventListener('input', _.debounce((e) => {
+            console.log(e.target.value);
+        }, 600));
+        // 防抖:
+        // 1.let timeout
+        // 2.if (timeout) clear
+        // 3.timeout = setTimeout
+        // debounce 之内
+        // func没有防抖功能
+        function debounce(func, wait) {
+            let timeout;
+            // 具有防抖功能
+            return function(event) {
+                if (timeout) {
+                    clearTimeout(timeout);
+                }
+                timeout = setTimeout(() => {
+                    // 在这里调用的
+                    // 默认指向 window
+                    // func(event);
+                    func.call(this, event);
+                }, wait)
+            }
+        }
+        const search2 = document.getElementById('search2');
+        search2.addEventListener('input', debounce(function(e){
+            console.log(this); // ?
+            console.log(e.target.value);
+        }, 600));
+    </script>
+</body>
+</html>
