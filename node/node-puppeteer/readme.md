@@ -1,0 +1,1 @@
+什么是Async/Await?  async/await是基于Promise实现的，它不能用于普通的回调函数。 async/await与Promise一样，是非阻塞的。 async 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个 function 是异步的，而 await 用于等待一个异步方法执行完成。
