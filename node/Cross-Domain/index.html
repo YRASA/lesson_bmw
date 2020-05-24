@@ -1,0 +1,26 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // xhr fetch
+    // 接口 api
+    // js 写入 cookie
+    document.cookie = 'abc=123';
+    // 真实请求: POST /api
+    // 1 -> 预检preflight, 试探一下能不能跨域, 2 -> POST /api
+    // withCredentials: axios语法
+    // 原生xmlhttprequest: 也是withCredentials
+    // const xhr = new xmlhttprequest()
+    // xhr.withCredentials = true
+    axios({
+        // withCredentials: true,
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        url: 'http://localhost:9090/api',
+        method: 'POST', // 传递数据
+        data: {
+            username: '123',
+            owd: 789
+        }
+    })
+    .then(res => {
+        console.log(res);
+    })
+</script>
