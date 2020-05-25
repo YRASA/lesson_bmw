@@ -37,3 +37,14 @@ cookie 就是 存在前端的，cookie 和 服务器会话 一起用。
 2：可以通过前端设置  document.cookie = 'abc=123'
 
 Access-Control-Allow-Credentials: 前端发请求的时候允许携带 cookie
+
+## JSONP
+引入外部资源不受跨域限制, 不同于 xhr fetch:
+img
+link
+script
+
+借助script实现
+
+1.jsonp后端返回的是什么 头条
+    前端函数和后端返回的数据
