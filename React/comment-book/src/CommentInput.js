@@ -50,7 +50,7 @@ class CommentInput extends Component {
     }
 
     handleSubmit () {
-        if (this.props.onSubmit) { // 不能一根筋
+        if (this.props.onSubmit) {
             this.props.onSubmit({ //健壮性
                 username: this.state.username,
                 content: this.state.content,
