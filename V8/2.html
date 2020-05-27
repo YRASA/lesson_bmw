@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局作用域 foo
+        // function foo() {
+        //     // 函数作用域
+        //     var a = 1; // 简单对象
+        //     var b = a; // 独立的空间
+        //     a = 2;
+        //     console.log(a); // 2
+        //     console.log(b); // 1
+        // }
+        // foo();
+        // 两个执行上下文环境
+
+        function foo() {
+            var a = {name: '小猫'}; // 复杂对象
+            var b = a; // 引用式赋值 指向a
+            a.name = '小狗';
+            console.log(a); // 小狗
+            console.log(b); // 小狗
+        }
+    </script>
+</body>
+</html>
