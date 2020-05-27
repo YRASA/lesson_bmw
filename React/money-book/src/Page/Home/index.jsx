@@ -1,21 +1,32 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch, useRouteMatch } from 'react-router-dom';
 import HomeHeader from './HomeHeader';
 import List from './List';
 import Chart from './Chart';
-// <>组件: React.fragment
-class Index extends React.Component {
-    render() {
-        return (
-            <>
-                <HomeHeader />
-                // / + /list
-                // / + /chart
-                <Route path="/list" component={} />
-                <Route path="/chart" component={} />
-            </>
-        )
-    }
+
+// hook: 也是一个方法
+// <React.fragment>组件
+function Index() {
+    let { path, url } = useRouteMatch();
+    console.log(path, url);
+    return (
+        <React.Fragment>
+            <HomeHeader />
+            <Link to={`${url}/list`}>列表模式</Link>
+            <Link to={`${url}/chart`}>图表模式</Link>
+            <Switch>
+                <Route path={path} exact >
+                    <List />
+                </Route>
+                <Route path={`${path}/list`}>
+                    <List />
+                </Route>
+                <Route path={`${path}/chart`}>
+                    <Chart />
+                </Route>
+            </Switch>
+        </React.Fragment>
+    )
 }
 
 export default Index;

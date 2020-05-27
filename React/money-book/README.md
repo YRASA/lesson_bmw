@@ -4,4 +4,5 @@ json-server: 接口 mock
 
 cnpm i react-router-dom -S
 cnpm i axios bootstrap -S
-cnpm i json-server -D  
+cnpm i json-server -D
+cnpm i antd -S 

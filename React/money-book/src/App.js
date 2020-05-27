@@ -8,8 +8,8 @@ import Create from './Page/Create/index';
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={} />
-      <Route path="/create" component={} />
+      <Route path="/" exact component={Home} />
+      <Route path="/create" component={Create} />
     </BrowserRouter>
   );
 }
