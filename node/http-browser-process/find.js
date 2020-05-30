@@ -37,4 +37,4 @@ function match2(string) {
     }
     return false;
 }
-console.log(match2('i axb good'));
+console.log(match2('i axbc good'));
