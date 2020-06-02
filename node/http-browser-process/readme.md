@@ -92,3 +92,9 @@ let str = '34 + 567 -890'
 
 DOM 树, AST 抽象语法树
 栈
+
+css string -> AST
+css string -> css om
+
+## 浏览器 匹配css规则
+按照css选择器 从后往前匹配
