@@ -37,12 +37,12 @@ let currentToken = null;
 let currentAttribute = null;
 let stack = [ { type: 'document', children: [] } ];
 parse(htmlStr);
+// console.log(JSON.stringify(stack[0], null, 2));
 function computerCss(ele) {
     // 计算符合ele的所有css规则, css规则应用到这个节点上面
     // 1.靠ele属性父节点和css里面选择器匹配
     // 2.匹配 从后往前 .parent .cls
 }
-// console.log(JSON.stringify(stack[0], null, 2));
 function emit(token) {
     console.log(token);
     let top = stack[stack.length - 1];
