@@ -1,67 +1,43 @@
-{ type: 'startTag', tagName: 'html' }
-{ type: 'startTag', tagName: 'head' }
-{ type: 'endTag', tagName: 'head' }  
-{ type: 'startTag', tagName: 'body' }
-{ type: 'startTag', tagName: 'span' }
-{ type: 'startTag', tagName: 'div' } 
-{ type: 'endTag', tagName: 'div' }   
-{ type: 'endTag', tagName: 'body' }
-{ type: 'endTag', tagName: 'html' }
-
 {
-    "type": "document",
-    "children": [
-      {
-        "type": "startTag",
-        "tagName": "html",
-        "children": [
-          {
-            "type": "startTag",
-            "tagName": "head"
-          },
-          {
-            "type": "startTag",
-            "tagName": "body",
-            "children": [
-              {
-                "type": "startTag",
-                "tagName": "div"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-
-  {
-    "type": "document",
-    "children": [
-      {
-        "type": "element",
-        "children": [
-          {
-            "type": "element",
-            "children": [],
-            "attributes": [],
-            "tagName": "head"
-          },
-          {
-            "type": "element",
-            "children": [
-              {
-                "type": "element",
-                "children": [],
-                "attributes": [],
-                "tagName": "div"
-              }
-            ],
-            "attributes": [],
-            "tagName": "body"
-          }
-        ],
-        "attributes": [],
-        "tagName": "html"
-      }
-    ]
-  }
+  "type": "document",
+  "children": [
+    {
+      "type": "element",
+      "children": [
+        {
+          "type": "element",
+          "children": [],
+          "attributes": [],
+          "tagName": "head"
+        },
+        {
+          "type": "element",
+          "children": [
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "img"
+            },
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "span"
+            },
+            {
+              "type": "element",
+              "children": [],
+              "attributes": [],
+              "tagName": "div"
+            }
+          ],
+          "attributes": [],
+          "tagName": "body"
+        }
+      ],
+      "attributes": [],
+      "tagName": "html"
+    }
+  ]
+}
