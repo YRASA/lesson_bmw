@@ -5,7 +5,7 @@ let htmlStr = `
         <style>
         </style>
     </head>
-    <body>
+    <body class="parent">
         <img a="a" b="b"/>
         <span>
             <div>
@@ -20,7 +20,7 @@ let htmlStr = `
 </html>
 `
 let cssStr = `
-.cls {
+.parent .cls {
     font-size: 16px;
 }
 #myid {
@@ -37,11 +37,73 @@ let currentToken = null;
 let currentAttribute = null;
 let stack = [ { type: 'document', children: [] } ];
 parse(htmlStr);
-// console.log(JSON.stringify(stack[0], null, 2));
+console.log(JSON.stringify(stack[0], null, 2));
+/**
+ * {
+              "type": "element",
+              "children": [],
+              "attributes": [
+                {
+                  "name": "a",
+                  "value": "a"
+                },
+                {
+                  "name": "b",
+                  "value": "b"
+                }
+              ],
+              "tagName": "img"
+            },
+ * 
+ */
+function match(selector, ele) {
+    if (!selector || !ele.attributes) {
+        return false;
+    }
+    if (selector.charAt(0) === '#') {
+        let idAttr = ele.attributes.find(e => e.name === 'id');
+        if (idAttr && idAttr.value === selector.replace('#', '')) return true;
+    } else if (selector.charAt(0) === '.') {
+        let classAttr = ele.attributes.find(e => e.name === 'class');
+        if (classAttr && classAttr.value === selector.replace('.', '')) return true;
+    } else {
+        if (ele.tagName === selector) return true;
+    }
+    return false;
+}
 function computerCss(ele) {
     // 计算符合ele的所有css规则, css规则应用到这个节点上面
     // 1.靠ele属性父节点和css里面选择器匹配
     // 2.匹配 从后往前 .parent .cls
+    // tagName #id .className
+    // .parent .cls
+    // div || div.cls || span #parentID .parent #id
+    let elements = stack.slice(0).reverse();
+    if (!ele.computerStyle) ele.computerStyle = {};
+    // 所有 css 规则
+    for (rule of rules) {
+        let selector = rule.selectors[0].split(' ').reverse();
+        // 最后一项匹配上了
+        if (!match(selector[0], ele)) {
+            // 跳过本轮循环, 往后的步骤
+            continue;
+        }
+        // 看父级满不满足
+        // [{type: ;doc}, {html}, {header}]
+        // [.parent #parentID span]
+        let j = 1;
+        for (let i = 0; i < elements.length; i++) {
+            if (match(selector[j], elements[i])) j++;
+        }
+        // 匹配
+        if (j >= selector.length) {
+            // rule rule css 规则添加到 ele
+            for (let declare of rule.declarations) {
+                const { property, value } = declare;
+                ele.computerStyle[property] = value;
+            }
+        }
+    }
 }
 function emit(token) {
     console.log(token);
@@ -54,7 +116,8 @@ function emit(token) {
             attributes: token.attributes,
             tagName: token.tagName
         }
-        // 知道 attributes, 知道 stack 里面元素 是 element 父节点
+        // 开始标签解析完了
+        // 知道 attributes, 知道父节点
         computerCss(element);
         stack.push(element);
         // 作为栈顶的元素子节点, 为了生成树
