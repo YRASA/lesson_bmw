@@ -98,3 +98,19 @@ css string -> css om
 
 ## 浏览器 匹配css规则
 按照css选择器 从后往前匹配
+
+## layout
+display: flex | block | inline-block | grid
+justify-content: center;
+position:
+float:
+...
+用这些 对位置产生影响的元素, 计算元素的位置信息, 算出坐标系里的(x, y)
+
+## 正常的文档流
+脱离文档流: float: left position
+
+## normal flow
+行内元素(inline-level-box): 水平从左往右依次布局, 垂直方向默认会以baseline对齐
+块级元素(block-level-box): 垂直方向从上往下依次布局
+relative 定位:
