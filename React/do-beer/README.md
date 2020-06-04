@@ -6,3 +6,12 @@ beer 搜索 -> 列表 -> 点击 创建路由
 搜索跟列表显示合二为一 http://www.zzceaon.com/search/:searchTerm?a=q&b=2&c=3 /search/all /search/8 params
 详情页 /beer/:beerId detail details/item?id=
 语义化设计 URL /post/"postId
+
+1. 把应用架构搭好 路由
+2. 组件化思维
+3. list列表的编写流程
+4. router this.props.match.params
+5. / -> Main.js -> loadBeers -> loading -> list
+6. / -> /search/:searchTerm 路由 -> rule -> 显示
+componentDidMount
+    -> /search/:newSearchTerm 路由没变 componentDidMount 不会发生
