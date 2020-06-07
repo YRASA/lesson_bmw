@@ -114,3 +114,9 @@ float:
 行内元素(inline-level-box): 水平从左往右依次布局, 垂直方向默认会以baseline对齐
 块级元素(block-level-box): 垂直方向从上往下依次布局
 relative 定位:
+
+## flex
+容器:
+flex-direction: row/cloumn
+justify-content: center/start/end
+align-item: center/start/end
