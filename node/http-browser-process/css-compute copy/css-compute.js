@@ -1,4 +1,7 @@
 const css = require('css');
+const images = require('images');
+const layout = require('./layout');
+
 let htmlStr = `
 <html>
     <head>
@@ -17,7 +20,6 @@ let cssStr = `
 .wrap {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 500px;
     height: 500px;
     background-color: rgb(255, 0, 0);
@@ -28,8 +30,8 @@ let cssStr = `
     background-color: rgb(0, 255, 0);
 }
 .aside {
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     background-color: rgb(0, 0, 255);
 }
 `
@@ -44,24 +46,32 @@ let currentAttribute = null;
 let stack = [{ type: 'document', children: [] }];
 parse(htmlStr);
 console.log(JSON.stringify(stack[0], null, 2));
-/**
- * {
-              "type": "element",
-              "children": [],
-              "attributes": [
-                {
-                  "name": "a",
-                  "value": "a"
-                },
-                {
-                  "name": "b",
-                  "value": "b"
-                }
-              ],
-              "tagName": "img"
-            },
- * 
- */
+// 拿到整棵树
+// 遍历树 渲染每个 element
+let tree = stack[0];
+// 绘制到哪里去
+// 容器
+const viewPort = images(800, 600);
+function render(view, element) {
+    if (element.style) {
+        let img = images(element.style.width, element.style.height);
+        if (element.style['background-color']) {
+            let color = element.style['background-color'];
+            let start = color.indexOf('('), end = color.lastIndexOf(')');
+            // substring -> [ )
+            let rgb = color.substring(start + 1, end).split(', ').map(e => parseInt(e));
+            img.fill(rgb[0], rgb[1], rgb[2]);
+        }
+        view.draw(img, element.style.x, element.style.y);
+    }
+    if (element.children) {
+        for (let child of element.children) {
+            render(view, child);
+        }
+    }
+}
+render(viewPort, tree);
+viewPort.save('render.jpg');
 function match(selector, ele) {
     if (!selector || !ele.attributes) {
         return false;
@@ -133,6 +143,12 @@ function emit(token) {
         if (token.tagName !== top.tagName) {
             throw new Error('tagName match error')
         } else {
+            // flex布局放到结束标签位置
+            // 因为像align-items、justify-content需要知道元素的宽高
+            // 先保证子元素宽高已经解析出来了
+            // 在这里计算(x, y)
+            // 栈顶元素就是要布局的容器
+            layout(top);
             stack.pop();
         }
     } else if (token.type === 'selfCloseToken') {
