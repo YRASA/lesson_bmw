@@ -20,4 +20,14 @@
     2. 数据来了之后隐藏
     父组要给loading传参
 
+- api/ 分层的能力, 职责分离 是代码复杂, 且大型化的前提,
+    每个路由模块页面独立一个js 文件 便于维护 和代码阅读
+    模块化
+
+使用export default时，对应的import语句不需要使用大括号;
+不使用export default时,对应的import语句需要使用大括号。
+export default命令用于指定模块的默认输出。显然，一个模块只能有一 个默认输出， 因此export default命令只能使用一次。 所以, import命令
+面才不用加大括号，因为只可能唯一对应export default命令。
+
+
     
