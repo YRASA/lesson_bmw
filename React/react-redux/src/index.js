@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 const { createStore, combineReducers } = require('redux');
 let isLogin = false;
+// isLogin = true;
 let posts = [];
 // 状态 reducer(纯函数)
 // state 上一次的状态
