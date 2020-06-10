@@ -3,7 +3,8 @@ import './recommend.styl'; // webpack
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
 import Loading from '../../common/loading/Loading';
-import Lazyload from 'react-lazyload';  // 图片延迟加载
+import Scroll from '@/common/scroll/Scroll';
+import Lazyload, { forceCheck } from 'react-lazyload';  // 图片延迟加载
 // 1. 路由
 // 2. redux
 // 3. 切页面 + js
@@ -23,6 +24,7 @@ class Recommend extends React.Component {
         // 1. 用假数据 把页面先做出来
         // 2. 未来再改成接口
         this.state = {
+            refreshScroll: false,
             newAlbums: [],  // 数据驱动的界面
             loading: true,
             sliderList: [{
@@ -58,7 +60,11 @@ class Recommend extends React.Component {
                 // console.log(res);
                 this.setState({
                     loading: false,
-                    newAlbums: res
+                    newAlbums: res.albumlib.data.list
+                }, () => {
+                    this.setState({
+                        refreshScroll: true
+                    })
                 })
             })
         // setTimeout(() => {
@@ -68,22 +74,22 @@ class Recommend extends React.Component {
         // }, 3000)
     }
     render() {
+        // 切页面
+        console.log(this.state.newAlbums);
         let albums = this.state.newAlbums.map(item => (
-            <div className="album-wrapper" key={ item.id }>
+            <div className="album-wrapper" key={ item.album_id }>
                 <div className="left">
-                    <Lazyload height={60}>
-                        <img src={ item.img } alt={ item.name } width="100%" height="100%" />
-                    </Lazyload>
+                        <img src="https://qpic.y.qq.com/music_cover/4pmnRu5sL5QbtO8OS8NKJfZrk8BAWrrpjoXd2UIvyBMlQpiaQpf8MaQ/300?n=1" alt={ item.album_name } width="100%" height="100%" />
                 </div>
                 <div className="right">
                     <div className="album-name">
-                        { item.name }
+                        { item.album_name }
                     </div>
                     <div className="singer-name">
-                        { item.singer }
+                        { item.singers[0].singer_name }
                     </div>
                     <div className="public-time">
-                        { item.publicTime }
+                        { item.public_time }
                     </div>
                 </div>
             </div>
@@ -106,12 +112,19 @@ class Recommend extends React.Component {
                     </div>
                     <div className="swiper-pagination"></div>
                 </div>
-                <div className="album-container">
-                    <h1 className="title">最新专辑</h1>
-                    <div className="album-list">
-                        { albums }
+                <Scroll 
+                    refresh = { this.state.refreshScroll }
+                    onScroll={(e) => {
+                        // console.log(e);
+                        forceCheck();
+                    }}>
+                    <div className="album-container">
+                        <h1 className="title">最新专辑</h1>
+                        <div className="album-list">
+                            { albums }
+                        </div>
                     </div>
-                </div>
+                </Scroll>
                 <Loading show={ this.state.loading } title="Loading..."/>
             </div>
         )
