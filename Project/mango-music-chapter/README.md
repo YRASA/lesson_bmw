@@ -24,6 +24,8 @@
     每个路由模块页面独立一个js 文件 便于维护 和代码阅读
     模块化
 
+- 长的列表页面在移动端支持 Scroll
+
 使用export default时，对应的import语句不需要使用大括号;
 不使用export default时,对应的import语句需要使用大括号。
 export default命令用于指定模块的默认输出。显然，一个模块只能有一 个默认输出， 因此export default命令只能使用一次。 所以, import命令
