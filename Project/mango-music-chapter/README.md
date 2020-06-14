@@ -1,3 +1,14 @@
+- 首页问题
+    给数据建模 这种情况下可以考虑加model层
+    数据业务封装在model里
+    View Component 显示
+    数据的改动, 由model负责, 分层的好处
+    MVVM React 界面由数据驱动 前端设计模式
+    MVP Model View Presenter 后端web开发模式
+    MVC Model View Controller 后端web开发模式
+        1.首页recommend bug
+            - 专辑图片
+            - 歌手, 多个情况, 鲁莽的写成了一个
 1. 做React/Vue项目, 仿一个音乐类的
 2. 做一个可以上线的业务 思路 架构 技能点
 
