@@ -7,11 +7,18 @@ import BScroll from "better-scroll";
 import "./scroll.styl";
 // 容器, 父组件
 class Scroll extends React.Component {
+  componentDidUpdate() {
+    // 组件更新后, 如果实例化了better-scroll并且需要刷新就调用refresh
+    if (this.bScroll && this.props.refresh === true) {
+      this.bScroll.refresh();
+    }
+  }
   componentDidMount() {
     this.scrollView = ReactDOM.findDOMNode(this.refs.scrollView);
     // console.log(this.scrollView);
     if (!this.bScroll) {  // 防止多次渲染 单例
       this.bScroll = new BScroll(this.scrollView, {
+        // 实时派发scroll事件
         PropTypes: 3,
         click: this.props.click
       })
