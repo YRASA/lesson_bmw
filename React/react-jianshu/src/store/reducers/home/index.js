@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable';
 import { GET_HOME_LIST } from '../../constants';
-const map = fromJS({a: 1, b: 2});
-const list = fromJS([1, 2, 3, 4]);
-console.log(map);
-console.log(list);
+// const map = fromJS({a: 1, b: 2});
+// const list = fromJS([1, 2, 3, 4]);
+// console.log(map);
+// console.log(list);
 // 数据 状态
 // 初始化: immutable
 // 修改的时候: immutable concat特点
