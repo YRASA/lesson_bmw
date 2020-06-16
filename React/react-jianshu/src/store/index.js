@@ -1,11 +1,20 @@
-// import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux-immutable';
 import { createStore,
-  combineReducers,
+  // combineReducers,
   applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import HomeReducer from './reducers/home/index';
+import { fromJS } from 'immutable';
 
 // 多个 reducer 合并成一个
+// redux生成的
+// redux 原生的 combineReducers 返回的一个 reducer
+// 全链路上的: {} [] 其他的: 字符串 true 本身就是不可变的
+// let defaultRootState = fromJS({
+//   home: Map { homeList => List },
+//   detail: Map
+// })
+// function rootReducer(state = defaultRootState, action) {}
 const rootReducer = combineReducers({
   home: HomeReducer
 })
