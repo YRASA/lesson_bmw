@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 import ImmutableComponent from './components/common';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import './util/request.js';
 import store from './store/index';
 import logo from './logo.svg';
 import './App.css';
