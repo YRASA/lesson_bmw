@@ -1,0 +1,2 @@
+在package.json中：
+只有三个依赖，分别是react，react-dom,react-scripts,依赖为什么这么少，是因为像webpack，babel等等都是被creat react app封装到了react-scripts这个项目当中，包括基本启动命令 都是通过调用react-scripts这个依赖下面的命令进行启动的，creat react app搭建出来的项目默认支持这4种命令，start以开发模式启动项目，build将整个项目进行构建，test进行测试，eject，会将原本creat react app对webpack，babel等相关配置的封装弹射出来，如果我们要将creat react app配置文件进行修改，现有目录下是没有地方修改的，此时，我们就可以通过eject命令将原本被封装到脚手架当中的命令弹射出来，然后就可以在项目的目录下看到很多配置文件。
