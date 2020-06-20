@@ -61,3 +61,8 @@ npm install -save-dev xxx 开发环境
 .xxx-exit{}
 .xxx-exit-active{}
 .xxx-exit-done{}
+
+## headerEdit
+- ctrl + shift + p
+- ctrl + Alt + i
+- ctrl + Alt + t
