@@ -1,0 +1,66 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-06-22 13:06:35
+ * @LastEditTime: 2020-06-22 13:53:47
+ * @LastEditors: Please set LastEditors
+ * @Description: this
+ * @FilePath: \Course\js\js-this\1.html
+--> 
+<script>
+  // 'use strict';
+  const NOP = () => {
+    'use strict';
+  }
+    // EOF end of file
+    // 函数调用的位置
+    // 严格模式
+  function foo() {
+    // 'use strict';
+    console.log(this);
+  }
+  foo();
+  // 1.默认指向 windows
+
+  // 2.onj. 方式调用, this指向这个obj
+  let obj = {
+    name: 'lihua',
+    foo: foo
+  }
+  obj.foo();
+  // 注意
+  let fn = obj.foo;
+  fn();  // windows
+
+  // 3.call/apply 和 bind
+  // call/apply 1.指定this 2.调用函数 foo()
+  // 进阶版本
+  // foo.apply(newObj, []);
+  // foo.call(newObj, 'a', 'b', 'c');
+
+  // bind 1.只能绑定this,可绑定部分参数 2.不调用
+  // foo.bind(newObj);
+  // 函数
+  let that = null;
+  function Animal() {
+    // this
+    that = this;
+    console.log(this);
+  }
+  var dog = new Animal();
+  console.log(that === dog);
+
+  // 看函数在那里调用?
+  // 4.new: this指向new创建完的对象
+  // 3.call/apply 和 bind: 第一个参数
+  // 2.obj. : 指向这个对象
+  // 1.默认: windows, 严格模式指向 undefined
+
+  // 箭头函数看在n哪里定义的, this指向外层函数
+  function bar(a, b, c) {
+    console.log(this);
+    setTimeout(() => {
+      // this
+    }, 3000);
+  }
+  bar();
+</script>

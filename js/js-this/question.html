@@ -1,0 +1,61 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-06-22 13:55:20
+ * @LastEditTime: 2020-06-22 14:12:56
+ * @LastEditors: Please set LastEditors
+ * @Description: 面试题(this, 原型链, new原理)
+ * @FilePath: \Course\js\js-this\question.html
+--> 
+<script>
+  this.a = 20;
+  function go() {
+    // new 原理
+    // 创建一个对象 {}.__proto__ = go.prototype
+    console.log(this.a);  // go.prototype.a = 40
+    // this上面的 a
+    this.a = 30;
+  }
+  go.prototype.a = 40;
+  var test = {
+    a: 50,
+    init: function(fn) {
+      // this
+      // fn 是一个普通函数
+      // 在哪里以什么样的方式调用
+      // go()
+      fn();  // windows
+      console.log(this.a);  // this.a指向外层a: 50
+      return fn;
+    }
+  }
+  console.log((new go()).a);  // 40 30(go(里的this.a))
+  test.init(go);  // 20 50  调用go()后, 第一条this.a变为30
+  var p = test.init(go);  // 30 50
+  p();  // 30
+
+  class Home {
+    render() {
+      // this
+      return (
+        // fn 传给 react
+        // this 指向哪里, 看在哪里调用
+        // 调用 react 帮我们调用的
+        <div onClick={this.fn}></div>
+      )
+    }
+  }
+  function bar() {
+    console.log(this);
+  }
+  function foo() {
+    console.log(this);  // this === obj
+    // foo 内部 this 不会影响 bar 内部this
+    // bar 在哪以什么样的方式调用
+    bar();
+  }
+  let obj = {
+    foo
+  }
+  obj.foo();
+  // 只影响 foo 内部this
+</script>

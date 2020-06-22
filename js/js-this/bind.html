@@ -1,0 +1,23 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-06-22 13:16:16
+ * @LastEditTime: 2020-06-22 13:27:25
+ * @LastEditors: Please set LastEditors
+ * @Description: bind
+ * @FilePath: \Course\js\js-this\bind.html
+--> 
+<script>
+  function isMatch(reg, str) {
+    return str.match(reg);
+  }
+  console.log(isMatch(/[0-9]/, 'abc'));
+  console.log(isMatch(/[0-9]/, '123'));
+  console.log(isMatch(/[0-9]/, 'abc123'));
+
+  let isContainerNumber1 = isMatch.bind(null, /[0-9]/, '123');  // bind第一个参数为this
+  console.log(isContainerNumber1());
+  
+  let isContainerNumber2 = isMatch.bind(null, /[0-9]/);
+  console.log(isContainerNumber2('123'));
+  console.log(isContainerNumber2('ioioi'));
+</script>
