@@ -1,7 +1,7 @@
 <!--
  * @Author: Zzceaon
  * @Date: 2020-06-22 13:55:20
- * @LastEditTime: 2020-06-22 14:12:56
+ * @LastEditTime: 2020-06-22 16:28:14
  * @LastEditors: Please set LastEditors
  * @Description: 面试题(this, 原型链, new原理)
  * @FilePath: \Course\js\js-this\question.html
@@ -29,7 +29,7 @@
     }
   }
   console.log((new go()).a);  // 40 30(go(里的this.a))
-  test.init(go);  // 20 50  调用go()后, 第一条this.a变为30
+  test.init(go);  // 20 50  调用go()后, windows的this.a变为30
   var p = test.init(go);  // 30 50
   p();  // 30
 
