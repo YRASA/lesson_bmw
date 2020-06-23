@@ -1,0 +1,97 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-06-23 11:34:51
+ * @LastEditTime: 2020-06-23 14:07:27
+ * @LastEditors: Please set LastEditors
+ * @Description: 迷宫游戏
+ * @FilePath: \Course\js\find-path\1.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 700px;
+      font-size: 0;
+    }
+    .cell {
+      /* 6 + 1 */
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: gray;
+      border-right: 1px solid white;
+      border-bottom: 1px solid white;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+<script>
+  // 1.10000格子
+  // 2.画障碍物
+  // 3.BFS
+  const container = document.getElementById('container');
+  let arr = new Array(10000).fill(0);
+  arr.forEach((item, i) => {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    container.appendChild(cell);
+    // 浏览器触发事件是有一定频率的，所以移动快了会出现BUG
+    cell.addEventListener('mousemove', () => {
+      if(mouse) {
+        cell.style.backgroundColor = 'black';
+        arr[i] = 2;
+      }
+    })
+  })
+  let mouse = false;
+  document.addEventListener('mousedown', () => {
+    mouse = true;
+  })
+  document.addEventListener('mouseup', () => {
+    mouse = false;
+  })
+  // 鼠标右键contextmenu
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault()
+  })
+  function findPath(map, start, end) {
+    // 搜索入口
+    // 所有的选择
+    let queue = [start];
+    function insert(x, y) {
+      // map 一维数组
+      // x, y是一个坐标
+      // y * 100 跳到当前行
+      if (map[y * 100 + x] !== 0) return;
+      if (x < 0 || x >= 100 || y < 0 || y >= 100) return;
+      // 已经走过的点
+      map[y * 100 + x] = 3;
+      container.children[y * 100 + x].style.backgroundColor = 'green';
+      queue.push([x, y]);
+    }
+    while(queue.length) {
+      let [x, y] = queue.shift();
+      // 上下左右四个方向
+      // BFS匹配
+      if (x === end[0] && y === end[1]) {
+        return true;
+      }
+      insert(x + 1, y);
+      insert(x - 1, y);
+      insert(x, y + 1);
+      insert(x, y - 1);
+    }
+    return false;
+  }
+  // let res = findPath(arr, [0, 0], [50, 50]);
+  // console.log(res);
+  // BUG: 第一次执行后会影响第二次执行，所以第二次永远为false
+</script>
+</html>
