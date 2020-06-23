@@ -1,0 +1,24 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-06-23 14:09:11
+ * @LastEditTime: 2020-06-23 14:33:11
+ * @LastEditors: Please set LastEditors
+ * @Description: 原型链继承
+ * @FilePath: \Course\js\es5-extends\class.html
+--> 
+<script>
+  class Animal {
+    constructor() {
+      this.live = 'land';
+    }
+  }
+  class Cat extends Animal {
+    constructor() {
+      super();
+      this.sound = '喵喵喵';
+    }
+  }
+  let c1 = new Cat();
+  // 继承自父组件
+  console.log(c1, c1.live);
+</script>
