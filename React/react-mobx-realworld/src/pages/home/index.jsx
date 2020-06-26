@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Tabs, Row, Col, Tag } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { Pagination } from 'antd';
 
+const { TabPane } = Tabs;
 // 想要哪个页面的数据 注入流
-@inject('articleStore')
+@inject('articleStore')  // 不需要再写 connect mapStateProps mapDispatch
 @observer
 class Home extends Component {
   componentDidMount () {
     this.props.articleStore.getArticle('all');
+    this.props.articleStore.getTags();
   }
   handleChange = (page) => {
     // 1 offset 0
@@ -16,16 +19,47 @@ class Home extends Component {
     this.props.articleStore.getArticle('all', page - 1);
   }
   render() {
-    const { total, LIMIT } = this.props.articleStore
+    const { total, LIMIT, articles, handleTabChange, tags } = this.props.articleStore
     console.log(total, LIMIT)
     return (
       <div>
-        { this.props.articleStore.articles.all.length }
-        <Pagination
-        onChange={this.handleChange}
-        total={total}
-        pageSize={LIMIT}
-        defaultCurrent={1}/>
+        <Row>
+          <Col span={19}>
+            <Tabs defaultActiveKey={'all'} onChange={handleTabChange}>
+            {/* 点击 tab 请求内容 */}
+            {Object.keys(articles).map((tag, i) => {
+              return (
+                <TabPane key={tag} tab={tag}>
+                  {
+                    articles[tag].map((article, i) => {
+                      return (
+                        <div>
+                          <h3>
+                            {article.title}
+                          </h3>
+                          <p>
+                            {article.body}
+                          </p>
+                        </div>
+                      )
+                    })
+                  }
+                </TabPane>
+              )
+            })}
+            </Tabs>
+            <Pagination
+            onChange={this.handlePeginationChange}
+            total={total}
+            pageSize={LIMIT}
+            defaultCurrent={1}/>
+          </Col>
+          <Col span={5}>
+            {tags.map((tag, i) => {
+              return <Tag key={i}>{tag}</Tag>
+            })}
+          </Col>
+        </Row>
       </div>
     );
   }
