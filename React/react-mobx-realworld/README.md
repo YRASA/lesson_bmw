@@ -1,7 +1,7 @@
 <!--
  * @Author: Zzceaon
  * @Date: 2020-06-17 11:03:35
- * @LastEditTime: 2020-06-26 16:59:20
+ * @LastEditTime: 2020-06-27 02:54:09
  * @LastEditors: Please set LastEditors
  * @Description: README.md
  * @FilePath: \Course\React\react-mobx-realworld\README.md
@@ -31,9 +31,7 @@ let sum  // 依赖 arr
 
 ## mbox mbox-react
 1.Provider
-2.const store = {
-  articleStore
-}
+2.const store = {articleStore}
 3.取出 store @inject('articleStore') @observer
 4.怎么取: 通过 props 取出来 (组件的状态, action)
 
