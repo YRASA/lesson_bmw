@@ -1,7 +1,7 @@
 <!--
  * @Author: Zzceaon
  * @Date: 2020-07-01 10:47:55
- * @LastEditTime: 2020-07-01 11:53:07
+ * @LastEditTime: 2020-07-01 20:23:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\h5\618\index.html
@@ -49,14 +49,14 @@
                                 transform: scale(1, 1);
                                 `
       }
-      // setInterval(() => {
-      //   playNum++;
-      //   if (playNum > 2) {
-      //     playNum = 0;
-      //   }
-      //   document.querySelector('.video-box').style.transform = `
-      //   translate(${0-playNum*750}px)`;
-      // }, 3000);
+      setInterval(() => {
+        playNum++;
+        if (playNum > 2) {
+          playNum = 0;
+        }
+        document.querySelector('.video-box').style.transform = `
+        translate(${0-playNum*750}px)`;
+      }, 3000);
     }
   </script>
 </body>

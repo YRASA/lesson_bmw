@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-17 11:03:35
- * @LastEditTime: 2020-06-26 15:52:21
+ * @LastEditTime: 2020-07-01 21:16:41
  * @LastEditors: Please set LastEditors
  * @Description: 入口文件
  * @FilePath: \Course\React\react-mobx-realworld\src\App.js
@@ -14,6 +14,7 @@ import Home from './pages/home';
 import logo from './logo.svg';
 import './util/request.js';
 import './App.css';
+import './index.css';
 // 每一个模块对应 store
 const { Header, Content, Footer } = Layout;
 const store = {
