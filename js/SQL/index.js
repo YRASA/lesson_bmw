@@ -1,9 +1,9 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-01 21:39:12
- * @LastEditTime: 2020-07-01 22:12:41
+ * @LastEditTime: 2020-07-01 22:27:13
  * @LastEditors: Please set LastEditors
- * @Description: users数据
+ * @Description: JS模拟SQL
  * @FilePath: \Course\js\SQL\index.js
  */ 
 const users = [
@@ -44,7 +44,6 @@ SQL.prototype.where = function(predicate) {
         return groups;
       }, {})
   }
-  // 如果是对象
   return this;
 }
 SQL.prototype.groupBy = function(key) {
@@ -54,8 +53,6 @@ SQL.prototype.groupBy = function(key) {
   this._result = rows.reduce(function(groups, row) {
     // console.log(groups, row);
     var group = row[key];
-    // console.log(group);
-    // console.log(groups);
     if (!groups[group]) {  // 总有第一次
       groups[group] = [];
     }
