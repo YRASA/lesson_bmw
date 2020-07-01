@@ -1,0 +1,64 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-01 10:47:55
+ * @LastEditTime: 2020-07-01 11:53:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\h5\618\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name=viewport content="width=750,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>比天气更热的是？</title>
+  <link rel="stylesheet" href="./common.css">
+</head>
+
+<body>
+  <div id="app" class="win">
+    <div class="videowin1">
+      <video src="http://tmall.lpiii.cn/618/static/video/big3.mp4"
+      class="video-box video1" style="transform: translateX(0px);"></video>
+      <div id="playVideoCon">
+        <div class="innerWin wt">
+          <div class="helptit"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 固定app高度 完成项目适配
+    window.onload = function() {
+      const appEle = document.querySelector('#app');
+      let playNum = 0;
+      init();
+      function init() {
+        // 4次 页面渲染 DOM树 CSSDOM树
+        // 重新绘制
+        // appEle.style.background = 'rgb(0, 0, 0)';
+        // appEle.style.heigth = winHeight + 'px';
+        // appEle.style.marginTop = (0 - winHeight/2) + 'px';
+        // appEle.style.transform = 'scale(1, 1)';
+        // 一次性写完
+        appEle.style.cssText = `background: rgb(0, 0, 0);
+                                heigth: ${winHeight}px;
+                                margin-top: ${-winHeight/2}px;
+                                transform: scale(1, 1);
+                                `
+      }
+      // setInterval(() => {
+      //   playNum++;
+      //   if (playNum > 2) {
+      //     playNum = 0;
+      //   }
+      //   document.querySelector('.video-box').style.transform = `
+      //   translate(${0-playNum*750}px)`;
+      // }, 3000);
+    }
+  </script>
+</body>
+
+</html>

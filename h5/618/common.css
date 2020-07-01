@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  height: 100%;
+  background-color: green;
+}
+
+#app, .win {
+  position: absolute;
+  width: 750px;
+  height: 100%;
+  left: 50%;
+  overflow: hidden;
+  margin-left: -375px;
+}
+
+#app {
+  font-family: Avenir,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  top: 50%;
+}
