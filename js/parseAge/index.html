@@ -1,0 +1,35 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-02 09:46:56
+ * @LastEditTime: 2020-07-02 10:01:49
+ * @LastEditors: Please set LastEditors
+ * @Description: parseAge
+ * @FilePath: \Course\js\parseAge\index.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+</head>
+<body>
+  <!-- "ddd" NaN
+  抽象 不应该是这个函数做的, 哪哪都要参数判断
+  类型判断 typeof 抽象? string
+  if (typeof str != 'string')
+  isNaN -->
+  <script>
+    function parseAge(age) {
+      if (!_.isString(age)) throw new Error("请传递一个字符串");
+      var parsedAge = parseInt(age, 10);  // Nan 42 10的意思是10进制
+      if (!_.isNaN(parsedAge)) {
+        console.log("解析不能有效果");
+        return 0;
+      }
+      return parsedAge;
+    }
+  </script>
+</body>
+</html>
