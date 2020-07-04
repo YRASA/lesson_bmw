@@ -1,0 +1,45 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-02 11:26:56
+ * @LastEditTime: 2020-07-04 16:29:44
+ * @LastEditors: Please set LastEditors
+ * @Description: 拿到所有css属性
+ * @FilePath: \Course\js\winter\index.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      background: green;
+      width: 200px;
+    }
+    h1 {
+      font-size: 100px;
+    }
+    p {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>aa</h1>
+    <p>bbb</p>
+  </div>
+<script>
+  // document.body.style 渲染节点的入口
+  // 渲染节点入口 node cssStyleSheet
+  // W3C标准的css属性有哪些 浏览器的实验属性webkit
+  // -webkit-font-smothing = 
+  // filter webkit
+  // webkitUserSelect
+  // 不以webkit开头
+  console.log(Object.keys(document.body.style)
+  .filter((e) => !e.match(/^webkit/)).length);
+</script>
+</body>
+</html>
