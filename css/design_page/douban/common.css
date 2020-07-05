@@ -24,8 +24,20 @@ body, td, th {
   font: 12px Helvetica, Arial, sans-serif;
   line-height: 1.62;
 }
-
-
+h1 {
+  word-wrap: break-word;
+  display: block;
+  font-size: 25px;
+  font-weight: bold;
+  color: #494949;
+  margin: 0;
+  padding: 0 0 15px 0;
+  line-height: 1.1;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
 body {
   padding-top: 30px;
 }
@@ -87,4 +99,25 @@ body {
 #anony-nav .anony-nav-links li .lnk-market {
   width: 42px;
   background-position: -421px 0;
+}
+#anony-nav h1 {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+  width: 160px;
+  height: 34px;
+  margin: 0 20px 0 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: normal;
+  background: url(https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png) no-repeat 0 0;
+  background-image: -webkit-image-set(url(https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png) 1x,
+  url(https://img3.doubanio.com/f/sns/0f9e2dbca60b52f595ddbc02073cb4bb879ed1c9/pics/nav/logo_db@2x.png) 2x);
+  overflow: hidden;
+}
+#anony-nav h1 a {
+  display: block;
+  height: 34px;
+  line-height: 10em;
 }
