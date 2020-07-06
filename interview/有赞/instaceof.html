@@ -1,0 +1,46 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-06 14:52:53
+ * @LastEditTime: 2020-07-06 15:18:45
+ * @LastEditors: Please set LastEditors
+ * @Description: instaceof
+ * @FilePath: \Course\interview\有赞\instaceof.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let r = 'aaa';
+    let obj = {
+      [r]: 123,  // aaa: 123 动态
+      'r': 456
+    }
+    console.log(obj);
+    console.log(obj[r]);
+    console.log(obj['r'], obj.r);
+    for (let key in obj) {
+      console.log(obj[key]);
+    }
+    // 元编程: 对编程语言的再编程
+    class myArr {
+      static a = 1;
+      static [Symbol.hasInstance](obj) {  // 自定义instaceof
+        return true;
+      }
+      push() {
+        console.log('发生了push, 和原生push一样');
+      }
+    }
+    let arr1 = [];
+    let arr = new myArr();
+    console.log(myArr[Symbol.hasInstance]);
+    console.log(arr instanceof myArr);
+    console.log(arr1 instanceof myArr);
+  </script>
+</body>
+</html>

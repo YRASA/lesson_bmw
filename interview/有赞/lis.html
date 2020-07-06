@@ -1,0 +1,74 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-06 15:42:02
+ * @LastEditTime: 2020-07-06 17:10:18
+ * @LastEditors: Please set LastEditors
+ * @Description: 多事件处理
+ * @FilePath: \Course\interview\有赞\lis.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li data-uid="1">
+      1
+      <div>
+        123
+        <span>456</span>
+      </div>
+    </li>
+    <li data-uid="2">
+      2
+      <div>
+        123
+        <span>456</span>
+      </div>
+    </li>
+    <li data-uid="3">
+      3
+      <div>
+        123
+        <span>456</span>
+      </div>
+    </li>
+  </ul>
+  <script>
+    // document.getElementsByClassName();
+    // document.getElementsByName();
+    // document.getElementsByTagName();
+    // 1.循环绑定
+    // const lis = document.querySelectorAll('ul li');
+    // for (let node of lis) {
+    //   node.addEventListener('click', () => {
+        
+    //   })
+    // }
+    // 2.父容器绑定
+    // 点击li, li会往外扩散到ul
+    let ul = document.querySelector('ul');
+    ul.addEventListener('click', (event) => {
+      // 之前
+      // <li data-uid=""><div><span></span></div></li>
+      // 处理的就是点击div或者span情况下, 都认为点中了li
+      const target = event.path.find(x => x.tagName === 'LI' && x.getAttribute('data-uid'));
+      console.log(target);
+      let nickName = event.target.textContent;
+      let uid = event.target.getAttribute('data-uid');
+      console.log('clicked', event.target, event.currentTarget, nickName, uid);  // event.currentTarget: 绑定的事件的节点
+    })
+    const lis1 = document.querySelectorAll('li');  // 3个li
+    const lis2 = document.getElementsByTagName('li');  // 动态获取dom节点(实时) 3个li
+    // const lis3 = ul.querySelector('li');
+    console.log(lis1, lis2);  // 3个li 3个li
+    ul.removeChild(lis1[0]);
+    console.log(lis1, lis2);  // 3个li 2个li
+    // ul.innerHTML = '<li></li>';
+    // console.log(lis1, lis2);  // 3个li 1个li
+  </script>
+</body>
+</html>

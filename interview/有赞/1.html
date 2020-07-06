@@ -1,0 +1,110 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-06 10:17:56
+ * @LastEditTime: 2020-07-06 15:31:35
+ * @LastEditors: Please set LastEditors
+ * @Description: +号的用法(相邻, 除第一个之外都选中) & 变量提升 & Promise & instaceof
+ * @FilePath: \Course\interview\有赞\1.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 选择器组 */
+    li + li {
+      border-left: 1px solid #000;
+    }
+    /* 选中ul下面的所有li */
+    ul li {
+      color: red;
+    }
+    /* 选中ul下面的所有子元素li */
+    ul > li {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <div>
+      <li>00000</li>
+    </div>
+  </ul>
+  <script>
+    console.log(document.querySelectorAll('li + li'));
+    console.log(a);
+    var a = 1;
+    // Promise出现在es6之前
+    let promise = Promise.resolve(1);  // 立即 resolve 的 promise
+    let promise1 = Promise.resolve(2);
+    let promise2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1);
+      }, 1000);
+    });
+    let promise3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(1);
+      }, 500);
+    });
+    let promise4 = new Promise((resolve, reject) => {
+      // setTimeout(() => {
+        resolve(4);
+      // }, 1000);
+    });
+    // Promise.all 所有的异步任务成功才会成功
+    Promise.all([promise, promise1, promise2])  // 返回 promise
+      .then(res => {
+        console.log(res);
+      })
+      .catch()
+    // Promise.race 先发生变化的决定最终状态
+    Promise.race([promise2, promise3])  // 返回 promise
+      .then(res => {
+        console.log(res);
+      })
+      .catch()
+    // 怎么实现一个Promise.all
+    
+    // Promise.allSettled 所有的异步任务执行完才返回(即使不成功) Promise.all的补充
+    Promise.allSettled([promise, promise1, promise2, promise3])  // 返回 promise
+      .then(res => {
+        console.log(res);
+      })
+      .catch()
+    let name = 'lilei';
+    function fo() {
+      console.log(name);
+    }
+    function changeName() {
+      name = 'lihua';
+      fo();
+    }
+    changeName(); // 'lilei'
+    function foo() {
+      let name = '123';
+      return function() {
+        console.log(name);  // '123'
+      }
+    }
+    // [] instanceof Array;
+    function myInstace(obj, Constructor) {
+      // if (Constructor[Symbol.hasInstance])
+      let proto = obj.__proto__;
+      if (proto === Constructor.prototype) return true;
+      if (proto === null) return false;
+      return myInstace(proto, Constructor);
+    }
+    console.log(myInstace([], Array));
+    console.log(myInstace({}, Object));
+  </script>
+</body>
+</html>

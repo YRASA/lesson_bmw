@@ -1,0 +1,54 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-06 11:42:19
+ * @LastEditTime: 2020-07-06 12:17:27
+ * @LastEditors: Please set LastEditors
+ * @Description: 手写Promise.All
+ * @FilePath: \Course\interview\有赞\promiseAll.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1);
+      }, 1000);
+    });
+    let p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(2);
+      }, 2000);
+    });
+    let p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(3);
+      }, 3000);
+    });
+    Promise.myAll = function(promiseArr) {
+      return new Promise((resolve, reject) => {
+        let total = 0;  // 成功的个数
+        let res = [];
+        promiseArr.forEach((pro, i) => {
+          pro.then((r) => {
+            res[i] = r;
+            total++;
+            if (total === promiseArr.length) {
+              // 所有的promise都成功了
+              resolve(res);
+            }
+          })
+          .catch(reject)
+        });
+      })
+    }
+    Promise.myAll([p, p2, p1])  // 输出顺序为数组里排列的顺序
+      .then(console.log)
+  </script>
+</body>
+</html>
