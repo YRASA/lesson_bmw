@@ -1,0 +1,56 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-07 16:19:49
+ * @LastEditTime: 2020-07-07 16:48:46
+ * @LastEditors: Please set LastEditors
+ * @Description: 翻转dom节点
+ * @FilePath: \Course\algorithm\list\reverse.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap">
+    <p>1</p>
+    <span>2</span>
+    <li>3</li>
+  </div>
+  <div class="wrap2">
+
+  </div>
+  <!-- <div>
+    <li>3</li>
+    <span>2</span>
+    <p>1</p>
+  </div> -->
+  <script>
+    // document.createElement()
+    // document.appendChild
+    // removeChild
+    const childs = document.querySelector('.wrap');
+    const eles = childs.childNodes;
+    // eles:
+    // #text
+    // <li>​3​</li>​
+    // #text
+    // <span>​2​</span>​
+    // #text
+    // <p>​1​</p>​
+    // #text
+
+    // const copy = [...eles];
+    // console.log(eles);
+    // 同一个dom节点只能有一个父节点(同一个dom节点不能从属于两个父节点)
+    // childs.innerHTML = '';
+    for (let len = eles.length - 1; len >= 0; len--) {
+      console.log(eles[len]);
+      childs.appendChild(eles[len])
+    }
+    document.querySelector('.wrap2').appendChild(eles[1])  // 同一个dom节点只能有一个父节点(同一个dom节点不能从属于两个父节点)
+  </script>
+</body>
+</html>

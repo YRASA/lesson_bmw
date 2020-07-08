@@ -1,0 +1,62 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-07 14:47:04
+ * @LastEditTime: 2020-07-08 12:40:59
+ * @LastEditors: Please set LastEditors
+ * @Description: 链表 leetcode328
+ * @FilePath: \Course\algorithm\list\list.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let node= {
+      val: 1
+    }
+    let node2 = {
+      val: 2
+    }
+    let node3 = {
+      val: 3
+    }
+    node.next = node2;
+    node2.next = node3;
+    console.log(node);
+    // node -> node2 -> node3
+    let current = node;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+    var oddEvenList = function(head) {
+      let l1 = {val: null, next: null}, l1Current = l1,
+        l2 = {val: null, next: null}, l2Current = l2,
+        current = head,
+        i = 1;
+      while (current) {
+        if (i % 2 !== 0) {
+          l1Current.next = current;
+          l1Current = l1Current.next;
+        } else {
+          l2Current.next = current;
+          l2Current = l2Current.next;
+        }
+        i++;
+        current = current.next;
+      }
+      if (i % 2 !== 0) {
+        l1Current.next = null
+      } else {
+        l2Current.next = null
+      }
+      l1Current.next = l2.next;
+      return l1.next;
+    }
+  </script>
+</body>
+</html>
