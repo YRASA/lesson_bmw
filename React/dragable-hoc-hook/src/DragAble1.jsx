@@ -76,14 +76,6 @@ function withDragAble(Com) {
     }
     render() {
       const { left, top } = this.state;
-      return <h2
-      style={{left, top}}
-      className="dragable"
-      onMouseDown={this.handleDown}
-      >h2</h2>
-    }
-    render() {
-      const { left, top } = this.state;
       return (
         <div style={{left, top}} className="dragable"
         onMouseDown={this.handleDown}
