@@ -1,16 +1,16 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-09 00:10:00
- * @LastEditTime: 2020-07-09 00:29:46
+ * @LastEditTime: 2020-07-09 00:48:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\antd-mockjs-hoc\src\App.js
  */ 
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import { Table } from 'antd';
-
+import './App.styl'
 // 全局的就可以 css是一定要引入的
 // import 'antd/dist/antd.css';
 // antd 全局引入方式 babel
