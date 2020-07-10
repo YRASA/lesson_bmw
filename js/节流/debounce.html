@@ -1,0 +1,42 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-10 10:55:31
+ * @LastEditTime: 2020-07-10 11:00:10
+ * @LastEditors: Please set LastEditors
+ * @Description: 防抖
+ * @FilePath: \Course\js\节流\debounce.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const body = document.body
+    // 拖拽 图片懒加载 -> 节流
+    // 搜索 -> 防抖
+    function getUserInfo() {
+      console.log('req')
+    }
+    body.onmousemove = debounce(getUserInfo, 3000)
+    function debounce(func, wait) {
+      let timeout = null
+      return function() {
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          func()
+        }, wait)
+      }
+    }
+  </script>
+</body>
+</html>
