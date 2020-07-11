@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-21 11:44:50
- * @LastEditTime: 2020-06-21 12:06:08
+ * @LastEditTime: 2020-07-11 19:44:22
  * @LastEditors: Please set LastEditors
  * @Description: reducer.js
  * @FilePath: \Course\React\ReduxDemo\demo01\src\store\reducer.js
@@ -21,6 +21,17 @@ export default (state = defaultState, action) => {
   if (action.type === 'changeInput') {
     let newState = JSON.parse(JSON.stringify(state))
     newState.inputValue = action.value
+    return newState
+  }
+  if (action.type === 'addItem') {
+    let newState = JSON.parse(JSON.stringify(state))
+    newState.list.push(newState.inputValue)
+    newState.inputValue = ''
+    return newState
+  }
+  if (action.type === 'deleteItem') {
+    let newState = JSON.parse(JSON.stringify(state))
+    newState.list.splice(action.index, 1)
     return newState
   }
   return state
