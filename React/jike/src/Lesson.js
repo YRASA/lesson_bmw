@@ -39,7 +39,7 @@ class Lesson extends React.Component {
     let { type1, type2 } = this.state
     // console.log(data,type1,type2,'--------------------')
     let res = data.filter(v => (type1 === 0 || type1 === v.t1) && (type2 === 0 || type2 === v.t2))
-    // console.log(res,'==========================')
+    console.log(res,'==========================')
     return (
       <Layout className="layout">
         <Header style={{backgroundColor: "#fff", borderBottom: "1px solid #ebebeb"}}>
