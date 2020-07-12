@@ -23,11 +23,13 @@ class Lesson extends React.Component {
       })
   }
   callback1 = (e) => {
+    console.log(e, '---')
     this.setState({
       type1: Number(e)
     })
   }
   callback2 = (e) => {
+    console.log(e, '+++')
     this.setState({
       type2: Number(e)
     })
@@ -72,7 +74,7 @@ class Lesson extends React.Component {
               defaultActiveKey="0"
               type="card"
               size={'large'}>
-              <TabPane tab="全部" key='0'>
+              <TabPane tab="所有形式" key='0'>
               </TabPane>
               <TabPane tab="专栏" key="1">
               </TabPane>
@@ -101,9 +103,11 @@ class Lesson extends React.Component {
                       background: "#fa8919",
                       borderRadius: "4px",
                       borderColor: "#fa8919"
-                    }} size='large'>
+                    }}
+                    size='large'
+                  >
                     开始学习
-              </Button>
+                  </Button>
                 </List.Item>
               )}
             />
