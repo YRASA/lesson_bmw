@@ -1,0 +1,24 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-13 20:09:27
+ * @LastEditTime: 2020-07-13 20:13:45
+ * @LastEditors: Please set LastEditors
+ * @Description: output: 10
+ * @FilePath: \Course\questions\闭包\1.html
+-->
+<script>
+  function test() {
+    var num = []
+    var i
+
+    for (i = 0; i < 10; i++) {
+      num[i] = function () {
+        console.log(i)
+      }
+    }
+
+    return num[9]
+  }
+
+  test()()
+</script>

@@ -1,0 +1,22 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-13 20:14:18
+ * @LastEditTime: 2020-07-13 20:14:53
+ * @LastEditors: Please set LastEditors
+ * @Description: output: 10
+ * @FilePath: \Course\questions\闭包\2.html
+-->
+<script>
+  var test = (function () {
+    var num = 0
+    return () => {
+      return num++
+    }
+  }())
+
+  for (var i = 0; i < 10; i++) {
+    test()
+  }
+
+  console.log(test())
+</script>
