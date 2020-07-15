@@ -1,0 +1,30 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-15 14:32:07
+ * @LastEditTime: 2020-07-15 18:05:57
+ * @LastEditors: Please set LastEditors
+ * @Description: xss
+ * @FilePath: \Course\js\question\7-11\xss.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+  img-src https://*; link-src 'none'; child-src: http://xxx.baidu.com;" >
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <!-- <script>
+      alert('xss')
+      // js cookie 注入广告 ...
+    </script> -->
+    <div></div>
+    &lt;script&gt;
+    alert('xss')
+    &lt;/script&gt;
+  </div>
+</body>
+</html>

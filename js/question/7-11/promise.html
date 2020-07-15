@@ -1,0 +1,23 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-15 13:43:51
+ * @LastEditTime: 2020-07-15 13:46:33
+ * @LastEditors: Please set LastEditors
+ * @Description: promise
+ * @FilePath: \Course\js\question\7-11\promise.html
+--> 
+<script>
+  let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(new Error('err'))
+    }, 1000);
+  })
+  let p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(123)
+    }, 2000);
+  })
+  Promise.all([p, p1]).then(res => {
+    console.log(res);
+  })
+</script>
