@@ -1,15 +1,15 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-11 23:38:59
- * @LastEditTime: 2020-07-12 17:53:30
+ * @LastEditTime: 2020-07-16 16:51:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdeom\src\TodoList.js
  */ 
 import React, { Component } from 'react';
-import { Input, Button, List } from 'antd';
 import store from './store';
 import { inputChangeAction, addItemAction, deleteItemAction } from './action/actionCreators'
+import TodoListUI from './TodoListUI'
 
 class TodoList extends Component {
   constructor(props) {
@@ -18,34 +18,18 @@ class TodoList extends Component {
     this.addItem = this.addItem.bind(this)
     this.storeChange = this.storeChange.bind(this)
     this.inputChange = this.inputChange.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
     store.subscribe(this.storeChange)
   }
   render() { 
     return (
-      <div style={{margin: "10px"}}>
-        <div>
-          <Input
-            placeholder={this.state.inputValue}
-            style={{width: "250px", marginRight: "10px"}}
-            onChange={this.inputChange}
-            value={this.state.inputValue}
-          />
-          <Button
-            type="primary"
-            onClick={this.addItem}
-          >
-            Add
-          </Button>
-        </div>
-        <div style={{width: "300px", margin: "10px"}}>
-        <List
-          bordered
-          dataSource={this.state.list}
-          renderItem={(item, index) => (<List.Item onClick={this.deleteItem.bind(this, index)}>{item}</List.Item>)}
-        />
-        </div>
-      </div>
-
+      <TodoListUI
+        inputValue={this.state.inputValue}
+        inputChange={this.inputChange}
+        addItem={this.addItem}
+        list={this.state.list}
+        deleteItem={this.deleteItem}
+      />
     )
   }
   inputChange(e) {
