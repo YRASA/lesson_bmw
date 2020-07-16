@@ -1,17 +1,15 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-21 11:28:29
- * @LastEditTime: 2020-07-16 17:18:18
+ * @LastEditTime: 2020-07-16 18:30:48
  * @LastEditors: Please set LastEditors
  * @Description: 列表文件
  * @FilePath: \Course\React\ReduxDemo\demo01\src\TodoList.js
  */
 import React, { Component } from 'react';
 import store from './store'
-import { changeInputAction, addItemAction, deleteItemAction, getListAction } from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getTodoList } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios'
-import './mock/data'
 
 const data = [
   "早8点开晨会，分配今天的任务",
@@ -30,12 +28,8 @@ class TodoList extends Component {
     store.subscribe(this.storeChange)
   }
   componentDidMount() {
-    axios.get('/data')
-      .then((res) => {
-        const data = res
-        const action = getListAction(data)
-        store.dispatch(action)
-      })
+    const action = getTodoList()
+    store.dispatch(action)
   }
   render() {
     return (

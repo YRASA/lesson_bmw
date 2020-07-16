@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-21 11:44:50
- * @LastEditTime: 2020-07-16 17:13:31
+ * @LastEditTime: 2020-07-16 18:32:35
  * @LastEditors: Please set LastEditors
  * @Description: reducer.js
  * @FilePath: \Course\React\ReduxDemo\demo01\src\store\reducer.js
@@ -33,7 +33,7 @@ export default (state = defaultState, action) => {
   }
   if (action.type === GET_LIST) {
     let newState = JSON.parse(JSON.stringify(state))
-    newState.list = action.data.data.list
+    newState.list = action.data
     return newState
   }
   return state

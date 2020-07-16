@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-11 23:38:51
- * @LastEditTime: 2020-07-16 17:36:48
+ * @LastEditTime: 2020-07-16 18:44:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdeom\src\store\reducer.js
@@ -31,7 +31,7 @@ export default (state=defaultState, action) => {
   }
   if (action.type === GET_LIST) {
     let newState = JSON.parse(JSON.stringify(state))
-    newState.list = action.data.data.list
+    newState.list = action.data
     return newState
   }
   return state

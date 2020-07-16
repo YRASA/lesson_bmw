@@ -1,17 +1,15 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-11 23:38:59
- * @LastEditTime: 2020-07-16 17:38:15
+ * @LastEditTime: 2020-07-16 18:44:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdeom\src\TodoList.js
  */ 
 import React, { Component } from 'react';
 import store from './store';
-import { inputChangeAction, addItemAction, deleteItemAction, getListAction } from './action/actionCreators'
+import { inputChangeAction, addItemAction, deleteItemAction, getTodoList } from './action/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios'
-import './mock/data'
 
 class TodoList extends Component {
   constructor(props) {
@@ -24,12 +22,8 @@ class TodoList extends Component {
     store.subscribe(this.storeChange)
   }
   componentDidMount() {
-    axios.get('/data')
-      .then((res) => {
-        const data = res;
-        const action = getListAction(data)
-        store.dispatch(action)
-      })
+    const action = getTodoList()
+    store.dispatch(action)
   }
   render() { 
     return (
