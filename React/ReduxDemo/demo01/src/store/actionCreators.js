@@ -1,12 +1,12 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-12 17:34:37
- * @LastEditTime: 2020-07-16 18:31:52
+ * @LastEditTime: 2020-07-16 21:45:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ReduxDemo\demo01\src\store\actionCreators.js
  */ 
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST, GET_MY_LIST } from './actionTypes'
 import axios from 'axios'
 import store from '.'
 import '../mock/data'
@@ -40,3 +40,7 @@ export const getTodoList = () => {
       })
   }
 }
+
+export const getMyListAction = () => ({
+  type: GET_MY_LIST
+})

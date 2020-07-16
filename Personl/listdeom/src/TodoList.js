@@ -1,14 +1,14 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-11 23:38:59
- * @LastEditTime: 2020-07-16 18:44:49
+ * @LastEditTime: 2020-07-16 22:55:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdeom\src\TodoList.js
  */ 
 import React, { Component } from 'react';
 import store from './store';
-import { inputChangeAction, addItemAction, deleteItemAction, getTodoList } from './action/actionCreators'
+import { inputChangeAction, addItemAction, deleteItemAction, getTodoList, getMyListAction } from './action/actionCreators'
 import TodoListUI from './TodoListUI'
 
 class TodoList extends Component {
@@ -22,7 +22,7 @@ class TodoList extends Component {
     store.subscribe(this.storeChange)
   }
   componentDidMount() {
-    const action = getTodoList()
+    const action = getMyListAction()
     store.dispatch(action)
   }
   render() { 

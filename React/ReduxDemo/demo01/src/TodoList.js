@@ -1,14 +1,14 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-21 11:28:29
- * @LastEditTime: 2020-07-16 18:30:48
+ * @LastEditTime: 2020-07-16 20:16:34
  * @LastEditors: Please set LastEditors
  * @Description: 列表文件
  * @FilePath: \Course\React\ReduxDemo\demo01\src\TodoList.js
  */
 import React, { Component } from 'react';
 import store from './store'
-import { changeInputAction, addItemAction, deleteItemAction, getTodoList } from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getMyListAction } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
 
 const data = [
@@ -28,7 +28,7 @@ class TodoList extends Component {
     store.subscribe(this.storeChange)
   }
   componentDidMount() {
-    const action = getTodoList()
+    const action = getMyListAction()
     store.dispatch(action)
   }
   render() {

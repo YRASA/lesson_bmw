@@ -1,12 +1,12 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-12 17:47:30
- * @LastEditTime: 2020-07-16 18:47:23
+ * @LastEditTime: 2020-07-16 22:54:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdeom\src\action\actionCreators.js
  */ 
-import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
+import { INPUT_CHANGE, ADD_ITEM, DELETE_ITEM, GET_LIST, GET_MY_LIST } from './actionTypes'
 import axios from 'axios'
 import '../mock/data'
 import store from '../store'
@@ -40,3 +40,7 @@ export const getTodoList = () => {
       })
   }
 }
+
+export const getMyListAction = () => ({
+  type: GET_MY_LIST
+})
