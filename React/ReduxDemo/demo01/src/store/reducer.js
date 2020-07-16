@@ -1,19 +1,15 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-06-21 11:44:50
- * @LastEditTime: 2020-07-12 17:38:21
+ * @LastEditTime: 2020-07-16 17:13:31
  * @LastEditors: Please set LastEditors
  * @Description: reducer.js
  * @FilePath: \Course\React\ReduxDemo\demo01\src\store\reducer.js
  */ 
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './actionTypes'
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
 const defaultState = {
   inputValue: "Write Something",
-  list: [
-    "早8点开晨会，分配今天的任务",
-    "早9点和项目经理开需求沟通会",
-    "晚5点组织人员进行Review代码"
-  ]
+  list: []
 }
 
 export default (state = defaultState, action) => {
@@ -33,6 +29,11 @@ export default (state = defaultState, action) => {
   if (action.type === DELETE_ITEM) {
     let newState = JSON.parse(JSON.stringify(state))
     newState.list.splice(action.index, 1)
+    return newState
+  }
+  if (action.type === GET_LIST) {
+    let newState = JSON.parse(JSON.stringify(state))
+    newState.list = action.data.data.list
     return newState
   }
   return state
