@@ -1,14 +1,16 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-18 19:53:38
- * @LastEditTime: 2020-07-19 01:32:12
+ * @LastEditTime: 2020-07-19 02:07:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdemo2\src\reducer\reducer.js
  */ 
 const defaultState = {
   inputValue: 'Zzceaon',
-  list: []
+  list: [
+    "YRASA"
+  ]
 }
 
 export default (state=defaultState, action) => {
