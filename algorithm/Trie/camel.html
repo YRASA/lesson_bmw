@@ -1,0 +1,18 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-17 16:17:48
+ * @LastEditTime: 2020-07-18 18:50:14
+ * @LastEditors: Please set LastEditors
+ * @Description: camel
+ * @FilePath: \Course\algorithm\Trie\camel.html
+--> 
+<!-- background-color => backgroundColor -->
+<script>
+  let str = 'web-kit-aa-bb';
+  let reg = /-([a-zA-Z]{1})/g;
+  let newStr = str.replace(reg, (...arg) => {
+    console.log(arg);
+    return arg[1].toUpperCase();
+  })
+  console.log(newStr);
+</script>

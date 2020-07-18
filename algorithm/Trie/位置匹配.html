@@ -1,0 +1,23 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-17 16:42:55
+ * @LastEditTime: 2020-07-18 18:54:26
+ * @LastEditors: Please set LastEditors
+ * @Description: 位置匹配
+ * @FilePath: \Course\algorithm\Trie\位置匹配.html
+--> 
+<script>
+  let str = 'hello';
+  let newStr = str.replace(/^/g, '#');
+  console.log(newStr);
+  // 子模式 子正则
+  // (?=)
+  // (?=l): l前面这个位置
+  let str1 = str.replace(/(?=l)/g, '#');
+  console.log(str1);
+  // (?!)
+  let str2 = str.replace(/(?!l)/g, '#');
+  console.log(str2);
+  let str3 = str.replace(/(?!=)/g, '#');
+  console.log(str3);
+</script>
