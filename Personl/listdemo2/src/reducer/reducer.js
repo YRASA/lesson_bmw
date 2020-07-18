@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-18 19:53:38
- * @LastEditTime: 2020-07-19 01:17:50
+ * @LastEditTime: 2020-07-19 01:32:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\Personl\listdemo2\src\reducer\reducer.js
@@ -21,6 +21,11 @@ export default (state=defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state))
     newState.list.push(newState.inputValue)
     newState.inputValue = ""
+    return newState
+  }
+  if (action.type === 'del_item') {
+    const newState = JSON.parse(JSON.stringify(state))
+    newState.list.splice(action.index, 1)
     return newState
   }
   return state
