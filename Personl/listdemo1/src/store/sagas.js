@@ -1,10 +1,10 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-16 22:50:55
- * @LastEditTime: 2020-07-16 22:58:18
+ * @LastEditTime: 2020-07-19 02:44:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \Course\Personl\listdeom\src\store\sagas.js
+ * @FilePath: \Course\Personl\listdemo1\src\store\sagas.js
  */ 
 import { takeEvery, put } from 'redux-saga/effects'
 import { getListAction } from '../action/actionCreators'
