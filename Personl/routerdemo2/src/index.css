@@ -1,0 +1,39 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.mainDiv {
+  display: flex;
+  width: 100%;
+}
+.leftNav {
+  width: 16%;
+  background-color: #c0c0c0;
+  color: #333;
+  font-size: 24px;
+  height: 1000px;
+  padding: 20px;
+}
+.rightMain {
+  width: 84%;
+  font-size: 20px;
+  height: 1000px;
+  background-color: #fff;
+}
+.topNav {
+  height: 50px;
+  background-color: #cfdefd;
+}
+.topNav ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.topNav li {
+  list-style: none;
+  text-align: center;
+  padding: 10px;
+}
+.Content {
+  padding: 20px;
+}
