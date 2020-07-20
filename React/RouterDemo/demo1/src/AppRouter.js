@@ -1,26 +1,17 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-19 23:45:53
- * @LastEditTime: 2020-07-19 23:54:56
+ * @LastEditTime: 2020-07-20 13:42:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\RouterDemo\demo1\src\AppRouter.js
  */ 
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
-function Index() {
-  return (
-    <h2>Zzceaon</h2>
-  )
-}
-
-function List() {
-  return (
-    <h2>List-Page</h2>
-  )
-}
-
+import List from './Pages/List'
+import Index from './Pages/Index'
+import Home from './Pages/Home'
+// 设置规则 传递值 接受值 显示内容
 function AppRouter() {
   return (
     <Router>
@@ -29,7 +20,8 @@ function AppRouter() {
         <li><Link to="/list/">列表页</Link></li>
       </ul>
       <Route path="/" exact component={Index} />
-      <Route path="/list/" component={List} />
+      <Route path="/list/:id" component={List} />
+      <Route path="/home/" component={Home} />
     </Router>
   )
 }
