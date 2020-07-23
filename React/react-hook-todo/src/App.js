@@ -1,6 +1,18 @@
-import React from 'react';
+/*
+ * @Author: Zzceaon
+ * @Date: 2020-07-20 10:32:30
+ * @LastEditTime: 2020-07-20 12:01:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\React\react-hook-todo\src\App.js
+ */ 
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Spin, Tabs } from 'antd'
+import { fetchTodos } from './api'
+
+const { TabPane } = Tabs
 
 function App() {
   return (
