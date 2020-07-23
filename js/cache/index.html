@@ -1,0 +1,27 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-20 14:39:55
+ * @LastEditTime: 2020-07-20 16:39:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\cache\index.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="http://localhost:9090/big.js"></script>
+  <!-- cache-control: max-agr=1天 
+  1天之内, 用户的内容都是缓存里面的
+  突然发现有一个BUG并且修复了, 已经放到服务器上面了,
+  但是用户访问不到新内容
+  -->
+  <!-- <script src="http://localhost:9090/big.js?t=890"></script> -->
+  <!-- <script src="http://localhost:9090/big.js?t=900"></script> -->
+  <!-- 解决方案: t=900新时间戳 => 重新加载s-->
+</body>
+</html>
