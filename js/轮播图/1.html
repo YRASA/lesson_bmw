@@ -1,0 +1,32 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-21 16:59:26
+ * @LastEditTime: 2020-07-21 17:07:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\轮播图\1.html
+--> 
+<script>
+  Promise.resolve(1).then(console.log)
+  function log(res) {
+    console.log(res)
+  }
+  Promise.resolve(1).then(log)
+  [123].map(parseInt)
+  // map得到的所有参数都会传给parseInt
+  // 1 0 [1, 2, 3]
+  // 2 1 [1, 2, 3]
+  // 3 2 [1, 2, 3]
+  // 第二参数: 进制
+  parseInt(1, 0)  // 0 -> 10  1
+  parseInt(2, 1)  // NaN
+  parseInt(3, 2)  // 2(01) 进制没有3 NaN
+
+  console.log(1)
+
+  let cb = () => {}
+  setTimeout(cb, timeout);
+
+  let cb1 = () => {}
+  [1, 2, 3].map(cb1)
+</script>
