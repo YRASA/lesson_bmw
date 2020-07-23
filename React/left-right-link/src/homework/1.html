@@ -1,0 +1,17 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-22 16:51:27
+ * @LastEditTime: 2020-07-22 17:10:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\React\left-right-link\src\homework\1.html
+--> 
+<script>
+  var a = {n: 1}
+  var b = a;
+  a.x = a = {n: 2};
+  console.log(a.x);
+  // >>> undefined
+  console.log(b.x);
+  // >>> n: 2
+</script>
