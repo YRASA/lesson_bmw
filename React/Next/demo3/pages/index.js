@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-25 22:14:54
- * @LastEditTime: 2020-07-25 22:31:58
+ * @LastEditTime: 2020-07-25 23:52:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\Next\demo3\pages\index.js
@@ -11,6 +11,30 @@ import Link from 'next/link'
 import Router from 'next/router'
 
 const Home = () => {
+  // routeChangeStart
+  // routeChangeComplete
+  // beforeHistoryChange
+  // routeChangeError 404不算Error
+  // hashChangeStart
+  // hashChangeComplete
+  Router.events.on('routeChangeStart', (...args) => {
+    console.log('1.routeChangeStart -> 路由开始变化, 参数为: ', ...args)
+  })
+  Router.events.on('routeChangeComplete', (...args) => {
+    console.log('2.routeChangeComplete -> 路由变化结束, 参数为: ', ...args)
+  })
+  Router.events.on('beforeHistoryChange', (...args) => {
+    console.log('3.beforeHistoryChange -> 参数为: ', ...args)
+  })
+  Router.events.on('routeChangeError', (...args) => {
+    console.log('4.routeChangeError -> 路由发生错误, 参数为: ', ...args)
+  })
+  Router.events.on('hashChangeStart', (...args) => {
+    console.log('5.hashChangeStart -> 参数为: ', ...args)
+  })
+  Router.events.on('hashChangeComplete', (...args) => {
+    console.log('6.hashChangeComplete -> 参数为: ', ...args)
+  })
   function gotoShenXue() {
     Router.push({
       pathname: "/xiaojiejie",
@@ -33,6 +57,10 @@ const Home = () => {
         <button onClick={gotoShenXue}>选深雪</button>
         <br/>
         <button onClick={gotoJieYi}>选结衣</button>
+      </div>
+      <div>
+        {/* hash */}
+        <Link href="#zzceaon"><a>选Zzceaon</a></Link>
       </div>
     </>
   )
