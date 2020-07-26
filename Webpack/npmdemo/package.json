@@ -1,0 +1,20 @@
+{
+  "name": "npmdemo",
+  "version": "1.0.0",
+  "description": "{\r   \"name\": \"npmdemo\",  // 包名称\r   \"version\": \"1.0.0\",  // 版本号\r   \"description\": \"\",\r   \"main\": \"index.js\",  // 执行入口\r   \"scripts\": {\r     \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\r   },  // 自定义脚本\r   \"keywords\": [],\r   \"author\": \"\",\r   \"license\": \"ISC\"\r }",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "build": "esliny ./src && webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "loadash": "^1.0.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.5.1"
+  }
+}
