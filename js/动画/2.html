@@ -1,0 +1,54 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-27 15:02:36
+ * @LastEditTime: 2020-07-27 16:09:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\动画\2.html
+--> 
+<style>
+  #el {
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+  }
+</style>
+<div id="el"></div>
+<button id="pause" onclick="pause()">pause</button>
+<button id="resume" onclick="resume()">resume</button>
+<script>
+  const el = document.getElementById('el')
+  let end = 400, start = 0, duration = 5000, startTime = Date.now()
+  // frame
+  // setInterval(() => {
+  //   console.log(1)
+  // }, 16)
+  // 固定时间
+  function tick() {
+    // console.log(1)
+    let hasPassed = Date.now() - startTime
+    let progress = hasPassed / duration
+    if (progress >= 1) {
+      el.style.transform = `translate3d(${end}px, ${end}px, 0)`
+      return
+    }
+    let x = progress * (end - start)
+    el.style.transform = `translate3d(${x}px, ${x}px, 0)`
+    rafId = requestAnimationFrame(tick)
+  }
+  // requestAnimationFrame(tick)
+  // requestAnimationFrame 能够确保回调在每一帧调用
+  // 60Hz 1000/60=16.6666ms
+  // cancelAnimationFrame 暂停
+  var rafId = null
+  rafId = requestAnimationFrame(tick)
+  var pauseTime = null
+  function pause() {
+    pauseTime = Date.now() 
+    cancelAnimationFrame(rafId)
+  }
+  function resume() {
+    startTime += Date.now() - pauseTime
+    rafId = requestAnimationFrame(tick)
+  }
+</script>
