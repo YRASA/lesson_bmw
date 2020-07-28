@@ -1,0 +1,21 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-23 16:45:21
+ * @LastEditTime: 2020-07-29 00:05:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\interview\bytedance\2.html
+--> 
+<script>
+  function Foo() {}
+  let oldName = Foo.name;
+  Foo.name = "bar";  // 修改失败
+  console.log([oldName, Foo.name]);
+  // >>> Foo, Foo
+  // Foo
+  // Foo,name 被限制了 只读
+  let obj = {a: 1}  // 如何限制a为只读
+  Object.freeze(obj)
+  obj.a = 2
+  console.log(obj)
+</script>

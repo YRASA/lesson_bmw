@@ -1,0 +1,22 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-23 16:53:22
+ * @LastEditTime: 2020-07-23 16:54:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\interview\bytedance\4.html
+--> 
+<script>
+  let name = 'global';
+  function getName() {
+      name = 'local';
+      return function() {
+          return name;
+      }
+  }
+  let getPrivate = getName();
+  console.log(name);
+  console.log(getPrivate());
+  // >>> local
+  // >>> local
+</script>
