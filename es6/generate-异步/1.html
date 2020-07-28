@@ -1,0 +1,35 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-28 14:38:14
+ * @LastEditTime: 2020-07-28 15:15:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\es6\generate-异步\1.html
+--> 
+<script>
+  // async await
+  // 协程: 比进程和线程跟更小的单元
+
+  // 普通函数 不可被一次性执行完
+  // 终止 打断
+  function* foo() {
+    let a = yield 1  // yield 并不是返回 1, 如果需要返回值, 放到next(返回值)
+    console.log(1, a)
+    let b = yield 2
+    console.log(2, b)
+    let c = yield 3
+    console.log(3, c)
+  }
+  let iterator = foo()
+  // console.log(iterator.next())
+  // console.log(iterator.next())
+  // console.log(iterator.next())
+  // console.log(iterator.next())
+
+  function autoRun(iteratorObj) {
+    let { done } = iteratorObj.next(8)
+    if (done) return
+    autoRun(iteratorObj)
+  }
+  autoRun(iterator)
+</script>

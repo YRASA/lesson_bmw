@@ -1,0 +1,53 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-28 15:39:28
+ * @LastEditTime: 2020-07-28 16:13:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\es6\generate-异步\3.html
+--> 
+<script>
+  // sleep() 休眠
+  function sleep(time) {
+    let pre = Date.now()
+    while (Date.now() - pre < time) {}
+  }
+  function sleep2(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(time)
+      }, time)
+    })
+  }
+  console.log(1)
+  sleep(3000)
+  console.log(2)
+  const foo = async() => {
+    let time = await sleep2(3000)
+    console.log(3, time)
+  }
+  foo()
+  function* bar() {
+    const a = yield sleep2(1000)
+    console.log(a)
+    const b = yield sleep2(1000)
+    console.log(b)
+  }
+  // next(值) 值 当作 yield 返回值
+  // 如果 a 要为 promise resolve出去的值
+  // 要把 promise的resolve的值写到next里
+  // promise.then(res => next(res))
+  // 如何拿到promise -> value
+  function autoRun(iteratorObj, preValue) {
+    // 当前这一块
+    let { done, value } = iteratorObj.next(preValue)
+    if (done) return
+    // 下一块
+    // value 相当于 promise
+    value.then((res) => {
+      autoRun(iteratorObj, res)
+    })
+  }
+  let iterator = bar()
+  autoRun(iterator)
+</script>

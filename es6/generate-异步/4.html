@@ -1,0 +1,35 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-28 16:27:59
+ * @LastEditTime: 2020-07-28 17:00:29
+ * @LastEditors: Please set LastEditors
+ * @Description: 高阶函数
+ * @FilePath: \Course\es6\generate-异步\4.html
+--> 
+<script>
+// repeat 实现，使用JS实现一个repeat方法，调用这个 repeatedFunc("hellworld")，会alert4次 helloworld, 每次间隔3秒
+function repeat(func, times, wait) {
+  return (arg) => {
+    for (let i = 0; i < times; i++) {
+      setTimeout(() => {
+        func(arg)
+      }, i * wait)
+    }
+  }
+}
+const repeatFunc = repeat(console.log, 4, 3000)
+repeatFunc("hello world")
+
+// arguments 参数的集合
+function foo() {
+  console.log(arguments)
+  console.log(arguments.forEach)
+  // 类数组 没有数组API(如forEach)
+  console.log(Array.from(arguments))  // 转换成数组
+  console.log((Array.from(arguments)).forEach)  // 此时拥有了数组的API: forEach
+  // [...arguments]
+  console.log([...arguments])  // 转换成数组
+  console.log(([...arguments]).forEach)  // 此时拥有了数组的API: forEach
+}
+foo(1, 2, 3, 4, 5, 6)
+</script>
