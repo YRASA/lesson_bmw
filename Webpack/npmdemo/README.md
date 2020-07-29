@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },   -------->  npm run test   -> 输出: echo \"Error: no test specified\" && exit 1
 
-5一下要加 --save
+webpack5一下要加 --save
 以上不加默认 --save-dev
 
 "dependencies": {  // 生产
@@ -45,8 +45,9 @@ npm有生命周期和自定义脚本
 
 "scripts": {
     "dev": "webpack-dev-server",  // 启动服务
-    "build": "esliny ./src && webpack"  // 格式化后打包
+    "build": "eslint ./src && webpack"  // 格式化后打包
   },
+  ->
   npm run + dev
   npm run + build
 

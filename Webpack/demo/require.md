@@ -1,11 +1,3 @@
-<!--
- * @Author: Zzceaon
- * @Date: 2020-07-26 20:09:14
- * @LastEditTime: 2020-07-26 20:22:50
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \Course\Webpack\demo\require.md
---> 
 大体结构:
 ```js
 (function(modules) {
