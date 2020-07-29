@@ -9,7 +9,7 @@ function PrivateRoute(props) {
     // react-router
     // <Route />
     const { path, component } = props
-    return !isLogin ? <Redirect to="/login" /> : <Route path={path} component={component} />
+    return !isLogin ? <Redirect from={path} to="/login" /> : <Route path={path} component={component} />
 }
 
 export default PrivateRoute
