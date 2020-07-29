@@ -1,7 +1,7 @@
 <!--
  * @Author: Zzceaon
  * @Date: 2020-07-21 14:39:45
- * @LastEditTime: 2020-07-21 16:53:16
+ * @LastEditTime: 2020-07-29 20:10:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\js\轮播图\index.html
@@ -17,6 +17,7 @@
       width: 750px;
       height: 370px;
       outline: 1px solid blue;
+      /* 不换行 */
       white-space: nowrap;
       font-size: 0;
       /* overflow: hidden; */
@@ -68,16 +69,16 @@
       setTimeout(() => {
         // 动画完：图片终止位置 在原来的基础上面 往左 -100%
         current.style.transition = ''; next.style.transition = '';
-        current.style.transform = `translateX(${-100 -100 * position}%)`;
+        current.style.transform = `translateX(${-100 * position -100}%)`;
         // -100%
         next.style.transform =  `translateX(${100 - 100 * nextPosition - 100}%)`;
         // -100%
         position = nextPosition;
       }, 16);
     }
-    // setInterval(() => {
-    //   nextPic()
-    // }, 2000);
+    setInterval(() => {
+      nextPic()
+    }, 2000);
 
     container.addEventListener('mousedown', function(event) {
       let startX = event.clientX, startY = event.clientY;
@@ -97,7 +98,6 @@
       last.style.transform = `translateX(${-750 * lastPosition - 750}px)`;
       function move(event) {
         // 移动时候的位置
-
       }
       function up(event) {
         // 终点位置
@@ -109,7 +109,7 @@
           // 左
           offset = -1
         }
-        console.log(offset);
+        // console.log(offset);
         document.removeEventListener('mousemove', move);
         document.removeEventListener('mouseup', up);
       }
