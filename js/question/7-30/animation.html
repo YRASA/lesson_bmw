@@ -1,0 +1,53 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-30 15:37:24
+ * @LastEditTime: 2020-07-30 17:23:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\question\7-30\animation.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 200px;
+      background-color: blue;
+      /* step(): 指定几步 */
+      animation: move 5s linear 0s 1 normal forwards;
+    }
+    @keyframes move {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(400px, 400px, 0);
+      }
+    }
+    .run {
+      background-image: url(https://images2015.cnblogs.com/blog/855573/201603/855573-20160321142616886-1770837455.png
+);
+      width: 89px;
+      height: 55px;
+      background-repeat: no-repeat;
+      animation: run 2s steps(6) 0s infinite;
+    }
+    @keyframes run {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -534px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <div class="run"></div>
+</body>
+</html>

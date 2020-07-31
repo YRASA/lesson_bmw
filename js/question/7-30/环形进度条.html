@@ -1,0 +1,96 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-07-30 14:47:13
+ * @LastEditTime: 2020-07-31 13:25:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\question\7-30\环形进度条.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 10px solid red;
+      border-top-color: transparent;
+      border-left-color: transparent;
+    } */
+    .pregress {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    .right, .left {
+      width: 100px;
+      height: 200px;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+    }
+    .right {
+      right: 0;
+    }
+    .left {
+      left: 0;
+    }
+    .circle-50 {
+      /* 160 + 20 + 20 = 200 */
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 20px solid transparent;
+      transform: rotate(-135deg);
+      position: absolute;
+      top: 0;
+    }
+    .right-circle {
+      right: 0;
+      border-top-color: blue;
+      border-right-color: blue;
+      animation: right-rotate 10s ease;
+    }
+    .left-circle {
+      left: 0;
+      border-bottom-color: red;
+      border-left-color: red;
+      animation: left-rotate 5s ease 5s; /* 最后一个5s: 延迟5s执行 */
+    }
+    @keyframes right-rotate {
+      0% {
+        transform: rotate(-135deg);
+      }
+      50% {
+        transform: rotate(45deg);
+      }
+      100% {
+        transform: rotate(45deg);
+      }
+    }
+    @keyframes left-rotate {
+      from {
+        transform: rotate(-135deg);
+      }
+      to {
+        transform: rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="circle"></div> -->
+  <div class="pregress">
+    <div class="right">
+      <div class="circle-50 right-circle"></div>
+    </div>
+    <div class="left">
+      <div class="circle-50 left-circle"></div>
+    </div>
+  </div>
+</body>
+</html>
