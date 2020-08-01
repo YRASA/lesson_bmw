@@ -1,0 +1,30 @@
+{
+  "id": "1980384",
+  "name": "music",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2346620",
+      "name": "music_selected_icon",
+      "font_class": "cd_icon",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "3033903",
+      "name": "menu",
+      "font_class": "caidan",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "11233220",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    }
+  ]
+}
