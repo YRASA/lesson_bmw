@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-22 10:24:22
- * @LastEditTime: 2020-07-23 11:28:20
+ * @LastEditTime: 2020-07-27 12:12:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\sanyuan-music\src\layouts\HomeLayout.js
@@ -24,7 +24,7 @@ function Home(props) {
         <NavLink to="/recommend" activeClassName="selected">
           <TabItem><span>推荐</span></TabItem>
         </NavLink>
-        <NavLink to="/singer" activeClassName="selected">
+        <NavLink to="/singers" activeClassName="selected">
           <TabItem><span>歌手</span></TabItem>
         </NavLink>
         <NavLink to="/rank" activeClassName="selected">
