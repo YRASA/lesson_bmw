@@ -56,7 +56,7 @@ class Tabs extends Component {
           <CSSTransition
             key={tab.id}
             timeout={500}
-            classNames="tab-wrap"
+            classNames="tabs-wrap"
           >
             <div className={`tab-item`}>
               {tab.panel}
