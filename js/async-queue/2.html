@@ -1,0 +1,32 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-02 17:11:37
+ * @LastEditTime: 2020-08-02 17:16:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\async-queue\2.html
+--> 
+<style>
+  .box {
+  width: 100px;
+  height: 100px;
+  padding-top: 20px;
+  margin-top: 20px;
+  border: 2px solid aqua;
+  /* 标准盒模型 */
+  /* margin不算进去 */
+  }
+  .box1 {
+    box-sizing: border-box;
+    /* 怪异盒模型 */
+    /* w h有多大, 盒子就有多大 */
+  }
+</style>
+<body>
+  <div class="box box1"></div>
+  <div class="box box2"></div>
+</body>
+<script>
+  document.querySelector('box1').getBoundingClientRect()
+  document.querySelector('box2').getBoundingClientRect()
+</script>

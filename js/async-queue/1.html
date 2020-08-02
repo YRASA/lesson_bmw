@@ -1,0 +1,36 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-02 16:57:17
+ * @LastEditTime: 2020-08-02 17:32:45
+ * @LastEditors: Please set LastEditors
+ * @Description: 设计一个简单的任务队列, 要求分别在 1,3,4 秒后打印出 "1", "2", "3"
+ * @FilePath: \Course\js\async-queue\1.html
+--> 
+<script>
+  class Queue {
+    constructor() {
+      this.tasks = []
+    }
+    task(wait, cb) {
+      this.tasks.push({ wait: wait, cb })
+      return this
+    }
+    start() {
+      let startTime = 0
+      for (let task of this.tasks) {
+        startTime += task.wait
+        setTimeout(() => {
+          task.cb()
+        }, startTime)
+      }
+    }
+  }
+  new Queue()
+    .task(1000, () => {
+        console.log(1)  // 1s
+    }).task(2000, () => {
+        console.log(2)  // 2s
+    }).task(1000, () => {
+        console.log(3)  // 3s
+    }).start()
+</script>
