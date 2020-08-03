@@ -1,0 +1,101 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-03 15:06:20
+ * @LastEditTime: 2020-08-03 15:40:41
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\css\z-index\flex.html
+-->
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .flex {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    /*  align-items: stretch 平分剩余空间 */
+    align-content: flex-end;
+    align-items: center;
+    /* justify-content: space-around 剩余空间平分给每个元素的左右两边 */
+    justify-content: space-evenly;
+  }
+  .item1 {
+    width: 120px;
+    height: 60px;
+    background-color: aqua;
+  }
+  .item2 {
+    width: 140px;
+    height: 160px;
+    background-color: red;
+    padding-top: 30px;
+  }
+  .item3 {
+    width: 140px;
+    height: 20px;
+    background-color: green;
+    /* align-self: flex-end; */
+    order: -1;
+    /* 圣杯 双飞翼
+      left固定 中间自适应 right固定
+      html结构让main在前面:
+        <div>main</div>
+        <div>left</div>
+        <div>right</div>
+    */
+  }
+  .flex1 {
+    display: flex;
+    /* sum 260 */
+    width: 200px;
+    outline: 1px solid blue;
+  }
+  .item11 {
+    /* 父元素有剩余空间就会自动放大 */
+    flex-grow: 0;
+    /* 父元素没有剩余空间就会自动缩小 */
+    flex-shrink: 0;
+    /* 至少要达到多大 */
+    flex-basis: 200px;
+    /* 符合写法: */
+    /* flex: 1 1 200px; */
+  }
+  .item22 {
+  }
+</style>
+<div class="flex">
+  <div class="item1">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item3">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item2">
+    English
+    <br />
+    English
+    <br />
+  </div>
+</div>
+<div class="flex1">
+  <div class="item1 item11">
+    English1
+  </div>
+  <div class="item2 item22">
+    English2
+    <br />
+    English2
+    <br />
+  </div>
+</div>

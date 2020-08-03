@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:38:13
- * @LastEditTime: 2020-08-01 10:40:02
+ * @LastEditTime: 2020-08-03 13:18:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\assets\global-style.js
@@ -36,7 +36,7 @@ const bgFull = () => {
 };
 
 export default {
-  "theme-color": "#d44439",
+  "theme-color": "#0e99c6",
   "theme-color-shadow": "rgba(212, 68, 57, .5)",
   "font-color-light": "#f1f1f1",
   "font-color-light-shadow": "rgba(241, 241, 241, 0.6)",//略淡
