@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 14:05:07
- * @LastEditTime: 2020-08-01 15:09:01
+ * @LastEditTime: 2020-08-03 10:05:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\components\list\index.js
@@ -9,6 +9,7 @@
 import React from 'react';
 import { ListWrapper, ListItem, List } from './style'
 import { getCount } from '../../api/utils'
+import LazyLoad from 'react-lazyload'
 
 function RecommendList(props) {
   return (
@@ -23,7 +24,9 @@ function RecommendList(props) {
                   {/* 提供文字阴影 */}
                   <div className="decorate"></div>
                   {/* 加此参数可以减小请求的图片资源大小 */}
-                  <img src={item.picUrl + "?param=300x300"} width="100%" height="100%" alt="music"/>
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./music.png')} alt="music" />}>
+                    <img src={item.picUrl + "?param=300x300"} width="100%" height="100%" alt="music"/>
+                  </LazyLoad>
                   <div className="play_count">
                     <i className="iconfont play">&#xe60c;</i>
                     <span className="count">{getCount (item.playCount)}</span>
