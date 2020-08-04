@@ -1,14 +1,14 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 23:10:05
- * @LastEditTime: 2020-08-03 13:02:56
+ * @LastEditTime: 2020-08-04 23:29:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\config.js
  */ 
 import axios from 'axios'
 
-export const baseUrl = "http://localhost:8080"
+export const baseUrl = "http://47.98.159.95/m-api"
 
 // axios的实例及拦截器配置
 const axiosInstance = axios.create({
