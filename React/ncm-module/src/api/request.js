@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 23:16:11
- * @LastEditTime: 2020-08-04 23:11:08
+ * @LastEditTime: 2020-08-05 18:48:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\request.js
@@ -19,4 +19,7 @@ export const getHotSingerListRequest = count => {
 }
 export const getSingerListRequest = (category, alpha, count) => {
   return axiosInstance.get(`/artist/list?cat=${category}&initial=${alpha.toLowerCase()}&offset=${count}`)
+}
+export const getRankListRequest = () => {
+  return axiosInstance.get(`/toplist/detail`)
 }

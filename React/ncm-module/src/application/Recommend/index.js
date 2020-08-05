@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:09
- * @LastEditTime: 2020-08-03 10:55:30
+ * @LastEditTime: 2020-08-05 22:27:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Recommend\index.js
@@ -9,7 +9,7 @@
 import React, { useEffect } from 'react';
 import Slider from '../../components/slider'
 import { connect } from 'react-redux'
-import * as actionTypes from './store/actionCreators'
+import * as actionCreators from './store/actionCreators'
 import RecommendList from '../../components/list'
 import Scroll from '../../baseUI/scroll'
 import { Content } from './style'
@@ -63,10 +63,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     getBannerDataDispatch() {
-      dispatch(actionTypes.getBannerList())
+      dispatch(actionCreators.getBannerList())
     },
     getRecommendListDataDispatch() {
-      dispatch(actionTypes.getRecommendList())
+      dispatch(actionCreators.getRecommendList())
     }
   }
 }

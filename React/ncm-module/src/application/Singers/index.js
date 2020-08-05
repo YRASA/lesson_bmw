@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:49
- * @LastEditTime: 2020-08-05 18:45:02
+ * @LastEditTime: 2020-08-05 22:14:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Singers\index.js
@@ -11,7 +11,7 @@ import Horizen from '../../baseUI/horizen-item'
 import { categoryTypes, alphaTypes } from '../../api/config'
 import { NavContainer, List, ListContainer, ListItem, EnterLoading } from './style'
 import Scroll from '../../baseUI/scroll'
-import * as actionTypes from './store/actionCreators'
+import * as actionCreators from './store/actionCreators'
 import { connect } from 'react-redux'
 import Loading from '../../baseUI/loading'
 import LazyLoad, { forceCheck } from 'react-lazyload'
@@ -135,33 +135,33 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     getHotSingerDispatch() {
-      dispatch(actionTypes.getHotSingerList())
+      dispatch(actionCreators.getHotSingerList())
     },
     updateCategoryDispatch(newVal) {
-      dispatch(actionTypes.changeCategory(newVal))
-      dispatch(actionTypes.getSingerList())
+      dispatch(actionCreators.changeCategory(newVal))
+      dispatch(actionCreators.getSingerList())
     },
     updateAlphaDispatch(newVal) {
-      dispatch(actionTypes.changeAlpha(newVal))
-      dispatch(actionTypes.getSingerList())
+      dispatch(actionCreators.changeAlpha(newVal))
+      dispatch(actionCreators.getSingerList())
     },
     // 滑动到最底部刷新部分的处理
     pullUpRefreshDispatch(hot, count) {
-      dispatch(actionTypes.changePullUpLoading(true))
+      dispatch(actionCreators.changePullUpLoading(true))
       if (hot) {
-        dispatch(actionTypes.refreshMoreHotSingerList())
+        dispatch(actionCreators.refreshMoreHotSingerList())
       } else {
-        dispatch(actionTypes.refreshMoreSingerList())
+        dispatch(actionCreators.refreshMoreSingerList())
       }
     },
     // 顶部下拉刷新
     pullDownRefreshDispatch(category, alpha) {
-      dispatch(actionTypes.changePullDownLoading(true))
-      dispatch(actionTypes.changeListOffset(0))  // 属于重新获取数据
+      dispatch(actionCreators.changePullDownLoading(true))
+      dispatch(actionCreators.changeListOffset(0))  // 属于重新获取数据
       if (category === '' && alpha === '') {
-        dispatch(actionTypes.getHotSingerList())
+        dispatch(actionCreators.getHotSingerList())
       } else {
-        dispatch(actionTypes.getSingerList())
+        dispatch(actionCreators.getSingerList())
       }
     }
   }
