@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:49
- * @LastEditTime: 2020-08-05 13:32:30
+ * @LastEditTime: 2020-08-05 18:45:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Singers\index.js
@@ -15,6 +15,8 @@ import * as actionTypes from './store/actionCreators'
 import { connect } from 'react-redux'
 import Loading from '../../baseUI/loading'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+// import { CHANGE_ALPHA, CHANGE_CATEGORY } from './data'
+// useReducer + useContext -> redux
 
 function Singers (props) {
   // mock数据
@@ -25,6 +27,9 @@ function Singers (props) {
   //     accountId: 277313426
   //   }
   // })
+  // useReducer + useContext -> redux
+  // const {data, dispatch} = useContext(CategoryDataContext)
+  // const {category, alpha} = data.toJS()
   const scrollRef = useRef(null)
   const { singerList, category, alpha, enterLoading, pullUpLoading, pullDownLoading, listOffset } = props
   const { updateCategoryDispatch, updateAlphaDispatch, getHotSingerDispatch, pullUpRefreshDispatch, pullDownRefreshDispatch } = props
@@ -39,11 +44,25 @@ function Singers (props) {
     updateAlphaDispatch(newVal)
     scrollRef.current.refresh()
   }
+  // useReducer + useContext -> redux
+  // const handleUpdateAlpha = (val) => {
+  //   if (alpha === val) return
+  //   dispatch({type: CHANGE_ALPHA, data: val})
+  //   updateAlphaDispatch(val)
+  //   scrollRef.current.refresh()
+  // }
   const handleUpdateCategory = (newVal) => {
     if (category === newVal) return
     updateCategoryDispatch(newVal)
     scrollRef.current.refresh()
   }
+  // useReducer + useContext -> redux
+  // const handleUpdateCategory = (val) => {
+  //   if (category === val) return
+  //   dispatch({type: CHANGE_CATEGORY, data: val})
+  //   updateCategoryDispatch(val)
+  //   scrollRef.current.refresh()
+  // }
   const handlePullUp = () => {
     pullUpRefreshDispatch(category === '', listOffset)
   }
