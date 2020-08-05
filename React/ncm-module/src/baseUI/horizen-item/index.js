@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\baseUI\horizen-item\index.js
  */
-import React, { useState, useRef, useEffect, memo } from 'react'
+import React, { useRef, useEffect, memo } from 'react'
 import styled from 'styled-components'
 import Scroll from '../scroll/index'
 import { PropTypes } from 'prop-types'
