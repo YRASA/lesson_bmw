@@ -1,5 +1,4 @@
 typescript interface 关键字
-
 - 运行一个ts + interface 项目需要的技术
   1.webapck
     .tsx
