@@ -15,6 +15,7 @@ import Scroll from '../../baseUI/scroll'
 import { Content } from './style'
 import { forceCheck } from 'react-lazyload'
 import Loading from '../../baseUI/loading/index'
+import { renderRoutes } from 'react-router-config'
 
 function Recommend(props) {
   // mock数据
@@ -50,6 +51,7 @@ function Recommend(props) {
         </div>
       </Scroll>
       { enterLoading ? <Loading></Loading> : null }
+      { renderRoutes(props.route.routes) }
     </Content>
   )
 }

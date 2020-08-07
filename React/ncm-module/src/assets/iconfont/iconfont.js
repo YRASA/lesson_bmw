@@ -1,40 +1,52 @@
-/*
- * @Author: Zzceaon
- * @Date: 2020-08-01 14:23:57
- * @LastEditTime: 2020-08-01 14:31:01
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \Course\React\ncm-module\src\assets\iconfont\iconfont.js
- */ 
 import { createGlobalStyle } from 'styled-components'
+
 export const IconStyle = createGlobalStyle`
-  @font-face {
-    font-family: "iconfont";
-    src: url('iconfont.eot?t=1596262992434'); /* IE9 */
-    src: url('iconfont.eot?t=1596262992434#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQEAAsAAAAACIgAAAO3AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqESIQLATYCJAMQCwoABCAFhG0HQxt4B8gOJQnNwIABAABAPPw39u2+mfkquwkRr376JppaaHjEE5ROVm+kPXTPJvPvpn0Sh1SdnklNJOKUfBLi74dz07nqk03X7WzqH/dO/wo8nM+yXOYa9C+M4rjzLqAxNnYRDZAEvQV2DnUwQecJNM2yCrajrKYFSBTStECcZM0UkPgMSkp5qAvVmLVlC3acUD1dTG8A183vxxewLiQklUyaO3W41AQK3stm4/jb/28HWh0hrM+G2yYyVgAKcTTWsR/fTqzA1/zkCmwC1OV3Eu9lM7WzcfPzJBqLok5/eYQkE1VSaRtsoGTmvUxlE7yvZZP4EGeQES+T62jhFgBRA8qMrKostZnajwjzemRSRg3OyIdmFQPTrf1T8qEhxeCgvL+/ZWBAY/G8XJS24mL5Duz50MKbg2U7sCf95I0BdWqf05dDsTM3Dp3DLsgDZ78aqj4dErLjLH5pV/5nnLsWgZ29efA02B75vL/iXGDg9jPE5VOXu1P83/bu6EsPeNNj8uDeiA+qwn0RP+2mAWlAf0vrmSuX779+G9wNQRcUrd1RtHatat7SJfT3F3bJXJ2nkdysZZ8EP/4JUHqbeUjiLL8STKPBUFrCPCRx0SoAbN2qiu2X5h4uitAyAcXpDhlovAlsx4FVv5StDTsoAdF8gwumy4vCteaA4jSHDEtrjf9/G2Uqh+KZDVUNmXL9JPsPYplxvCFDkdEwblw28RPPML733fHemAEi39Yi8A3Z2onJfMOVK3P37n86uHHO2s+QP0m029A3gMqT9zNPTtt5x67zNKmdeShxBwM3gP/n+J/4rEnfJZTPpu7xp/m1V8JvjL+qPAafnN8SooB31SsbUJxfeDiFH+Fx71YBULmLJWMpb5OKKfgFi6MO7KyEpib+g2dosg7VRG4bwaoJF5KamZDVLUALZQVUtGyAqrrN0LRc+eaWEYQvSgPL7AEIfc8g6boPWV8HWigTUDHpF1T1gw9NOyNgz5ZFweLFCFIcNJFtG0iWdjkZxczhVnkTNK+xU8grNmlyiDxsmEyMSwimy6ETojoWeNaakziOIRnkcpBlcBm0212kG7mskObiLBznzoqPZ+JeFEe7HAC3HQJROJAJqc0GJBbNxYnR23Pw0OebQGZr2FFQSsMPpxyEeLC9kxLFSciBliucuRr2ZbDHWmZJOByGJzEQFwdSGeZCdnaur8IdL7NiIY0Tx1Ii5pYlXm7G5FXEta9ybOEOaJKWlEiRo0RF7YDJMPVZIppiTZRR54EUoi0AAAA=') format('woff2'),
-    url('iconfont.woff?t=1596262992434') format('woff'),
-    url('iconfont.ttf?t=1596262992434') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-    url('iconfont.svg?t=1596262992434#iconfont') format('svg'); /* iOS 4.1- */
-  }
-
-  .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .icon-cd_icon:before {
-    content: "\e60c";
-  }
-
-  .icon-caidan:before {
-    content: "\e64d";
-  }
-
-  .icon-search:before {
-    content: "\e72e";
-  }
+  @font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1596804979827'); /* IE9 */
+  src: url('iconfont.eot?t=1596804979827#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+  url('iconfont.woff?t=1596804979827') format('woff'),
+  url('iconfont.ttf?t=1596804979827') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1596804979827#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-cd_icon:before {
+  content: "\e60c";
+}
+.icon-search:before {
+  content: "\e72e";
+}
+.icon-message:before {
+  content: "\e600";
+}
+.icon-back:before {
+  content: "\e7ea";
+}
+.icon-love:before {
+  content: "\e63f";
+}
+.icon-add:before {
+  content: "\e670";
+}
+.icon-gengduo:before {
+  content: "\e6a1";
+}
+.icon-Play:before {
+  content: "\e732";
+}
+.icon-menu:before {
+  content: "\e71f";
+}
+.icon-Listener:before {
+  content: "\e66b";
+}
+.icon-add1:before {
+  content: "\e601";
+}
 `

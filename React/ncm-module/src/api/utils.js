@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 14:34:04
- * @LastEditTime: 2020-08-06 05:46:45
+ * @LastEditTime: 2020-08-08 06:18:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\utils.js
@@ -35,4 +35,13 @@ export const filterIndex = rankList => {
       return i + 1
     }
   }
+}
+// 处理歌手列表拼接歌手名字
+export const getName = list => {
+  let str = ""
+  list.map((item, index) => {
+    str += index === 0 ? item.name : "/" + item.name
+    return item
+  })
+  return str
 }

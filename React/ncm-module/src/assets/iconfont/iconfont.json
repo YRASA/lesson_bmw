@@ -1,30 +1,86 @@
 {
-  "id": "1980384",
-  "name": "music",
+  "id": "",
+  "name": "",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
     {
-      "icon_id": "2346620",
+      "icon_id": "60989421",
       "name": "music_selected_icon",
       "font_class": "cd_icon",
       "unicode": "e60c",
       "unicode_decimal": 58892
     },
     {
-      "icon_id": "3033903",
-      "name": "menu",
-      "font_class": "caidan",
-      "unicode": "e64d",
-      "unicode_decimal": 58957
-    },
-    {
-      "icon_id": "11233220",
+      "icon_id": "60989423",
       "name": "search",
       "font_class": "search",
       "unicode": "e72e",
       "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "61347230",
+      "name": "message",
+      "font_class": "message",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "61347231",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e7ea",
+      "unicode_decimal": 59370
+    },
+    {
+      "icon_id": "61347232",
+      "name": "love",
+      "font_class": "love",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "61347233",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "61347234",
+      "name": "更多 ",
+      "font_class": "gengduo",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "61347235",
+      "name": "Play",
+      "font_class": "Play",
+      "unicode": "e732",
+      "unicode_decimal": 59186
+    },
+    {
+      "icon_id": "61347936",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e71f",
+      "unicode_decimal": 59167
+    },
+    {
+      "icon_id": "61389751",
+      "name": "Listener",
+      "font_class": "Listener",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "61390629",
+      "name": "add",
+      "font_class": "add1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
     }
   ]
 }

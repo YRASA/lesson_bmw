@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:20
- * @LastEditTime: 2020-08-01 14:27:42
+ * @LastEditTime: 2020-08-07 12:13:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Home\index.js
@@ -16,7 +16,7 @@ function Home(props) {
   return (
     <div>
       <Top>
-        <span className="iconfont menu">&#xe64d;</span>
+        <span className="iconfont menu">&#xe71f;</span>
         <span className="title">Musik</span>
         <span className="iconfont search">&#xe72e;</span>
       </Top>

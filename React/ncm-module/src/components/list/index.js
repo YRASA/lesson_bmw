@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 14:05:07
- * @LastEditTime: 2020-08-03 10:05:25
+ * @LastEditTime: 2020-08-06 06:14:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\components\list\index.js
@@ -10,8 +10,12 @@ import React from 'react';
 import { ListWrapper, ListItem, List } from './style'
 import { getCount } from '../../api/utils'
 import LazyLoad from 'react-lazyload'
+import { withRouter } from 'react-router-dom'
 
 function RecommendList(props) {
+  const enterDetail = (id) => {
+    props.history.push(`/recommend/${id}`)
+  }
   return (
     <ListWrapper>
       <h1 className="title"> 推荐歌单 </h1>
@@ -19,7 +23,10 @@ function RecommendList(props) {
         {
           props.recommendList.map((item, index) => {
             return (
-              <ListItem key={item.id + index}>
+              <ListItem
+                key={item.id + index}
+                onClick={() => enterDetail(item.id)}
+              >
                 <div className="img_wrapper">
                   {/* 提供文字阴影 */}
                   <div className="decorate"></div>
@@ -42,4 +49,5 @@ function RecommendList(props) {
   )
 }
 
-export default React.memo(RecommendList)
+// 采用withRouter的理由: List作为RecommendList的子组件, 并不能从props拿到history变量, 无法跳转路由
+export default React.memo(withRouter(RecommendList))

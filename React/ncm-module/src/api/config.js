@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 23:10:05
- * @LastEditTime: 2020-08-05 12:15:15
+ * @LastEditTime: 2020-08-08 03:14:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\config.js
@@ -25,6 +25,9 @@ axiosInstance.interceptors.response.use(
 export {
   axiosInstance
 }
+
+//顶部的高度
+export const HEADER_HEIGHT = 45;
 
 // 歌手种类
 export const categoryTypes = [{
