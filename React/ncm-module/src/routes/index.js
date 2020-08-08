@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-31 14:34:03
- * @LastEditTime: 2020-08-08 17:31:04
+ * @LastEditTime: 2020-08-08 22:43:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\routes\index.js
@@ -13,6 +13,7 @@ import Rank from '../application/Rank'
 import Recommend from '../application/Recommend'
 import Singers from '../application/Singers'
 import Album from '../application/Album'
+import Singer from '../application/Singer'
 
 export default [
   {
@@ -38,7 +39,14 @@ export default [
       },
       {
         path: "/singers",
-        component: Singers
+        component: Singers,
+        key: 'singers',
+        routes: [
+          {
+            path: '/singers/:id',
+            component: Singer
+          }
+        ]
       },
       {
         path: "/rank",

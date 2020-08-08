@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:49
- * @LastEditTime: 2020-08-05 22:14:46
+ * @LastEditTime: 2020-08-08 20:19:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Singers\index.js
@@ -12,6 +12,7 @@ import { categoryTypes, alphaTypes } from '../../api/config'
 import { NavContainer, List, ListContainer, ListItem, EnterLoading } from './style'
 import Scroll from '../../baseUI/scroll'
 import * as actionCreators from './store/actionCreators'
+import { renderRoutes } from 'react-router-config'
 import { connect } from 'react-redux'
 import Loading from '../../baseUI/loading'
 import LazyLoad, { forceCheck } from 'react-lazyload'
@@ -69,6 +70,9 @@ function Singers (props) {
   const handlePullDown = () => {
     pullDownRefreshDispatch(category, alpha)
   }
+  const enterDetail = (id) => {
+    props.history.push(`/singers/${id}`)
+  }
   // 渲染函数 返回歌手列表
   const renderSingerList = () => {
     const { singerList } = props
@@ -77,7 +81,10 @@ function Singers (props) {
         {
           singerList.toJS().map((item, index) => {
             return (
-              <ListItem key={item.accountId+""+index}>
+              <ListItem
+                key={item.accountId+""+index}
+                onClick={() => enterDetail(item.id)}
+              >
                 <div className="img_wrapper">
                   <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="music"/>}>
                     <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="music"/>
@@ -120,6 +127,7 @@ function Singers (props) {
       </ListContainer>
       {/* 入场加载动画 */}
       { enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null }
+      { renderRoutes(props.route.routes) }
     </div>
   )
 }

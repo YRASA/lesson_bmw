@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-31 10:31:29
- * @LastEditTime: 2020-08-05 18:43:53
+ * @LastEditTime: 2020-08-08 22:44:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\App.js
@@ -14,7 +14,6 @@ import { GlobalStyle } from './style'
 import store from './store/index'
 import routes from './routes/index.js'
 import { HashRouter } from 'react-router-dom'
-import { Data } from './application/Singers/data'
 
 function App() {
   return (
