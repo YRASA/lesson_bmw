@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-31 14:34:03
- * @LastEditTime: 2020-08-06 06:19:44
+ * @LastEditTime: 2020-08-08 17:31:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\routes\index.js
@@ -42,7 +42,14 @@ export default [
       },
       {
         path: "/rank",
-        component: Rank
+        component: Rank,
+        key: 'rank',
+        routes: [
+          {
+            path: '/rank/:id',
+            component: Album
+          }
+        ]
       }
     ]
   }

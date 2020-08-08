@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 10:21:33
- * @LastEditTime: 2020-08-06 05:54:56
+ * @LastEditTime: 2020-08-08 17:46:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Rank\index.js
@@ -13,6 +13,7 @@ import { filterIndex } from '../../api/utils'
 import { Container, List, ListItem, SongList, EnterLoading } from './style'
 import Loading from '../../baseUI/loading'
 import Scroll from '../../baseUI/scroll'
+import { renderRoutes } from 'react-router-config'
 
 function Rank(props) {
   const { rankList: list, loading } = props
@@ -23,6 +24,14 @@ function Rank(props) {
   let globalList = rankList.slice(globalStartIndex)
   // 榜单数据未加载出来之前都给隐藏
   let displayStyle = loading ? {"display": "none"}: {"display": ""}
+  useEffect(() => {
+    if (!rankList.length) {
+      getRankListDataDispatch()
+    }
+  }, [])
+  const enterDetail = (detail) => {
+    props.history.push(`/rank/${detail.id}`)
+  }
   const renderRankList = (list, global) => {
     return (
       <List globalRank={global}>
@@ -32,6 +41,7 @@ function Rank(props) {
               <ListItem
                 key={`${item.coverImgId}${index}`}
                 tracks={item.tracks}
+                onClick={() => enterDetail(item)}
               >
                 <div className="img_wrapper">
                   <img src={item.coverImgUrl} alt=""/>
@@ -57,12 +67,6 @@ function Rank(props) {
       </SongList>
     ) : null
   }
-  useEffect(() => {
-    if (!rankList.length) {
-      getRankListDataDispatch()
-    }
-    // eslint-disable-next-line
-  }, [])
   return (
     <Container>
       <Scroll>
@@ -74,6 +78,7 @@ function Rank(props) {
           { loading ? <EnterLoading><Loading></Loading></EnterLoading> : null }
         </div>
       </Scroll>
+      { renderRoutes(props.route.routes) }
     </Container>
   )
 }
