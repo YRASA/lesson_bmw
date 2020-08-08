@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 14:34:04
- * @LastEditTime: 2020-08-08 06:18:51
+ * @LastEditTime: 2020-08-08 16:56:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\utils.js
@@ -45,3 +45,5 @@ export const getName = list => {
   })
   return str
 }
+// 判断一个对象是否为空
+export const isEmptyObject = obj => !obj || Object.keys(obj).length === 0
