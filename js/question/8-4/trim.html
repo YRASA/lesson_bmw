@@ -1,0 +1,10 @@
+<script>
+// 实现 trim 
+function trim(str) {
+  let left  = 0, right = str.length - 1
+  while (str[left] === " ") left++
+  while (str[right] === " ") right--
+  return str.substring(left, right + 1)
+}
+console.log(trim(" Aimer "))
+</script>

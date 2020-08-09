@@ -1,0 +1,128 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-04 19:10:24
+ * @LastEditTime: 2020-08-09 19:42:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\question\8-4\light.html
+-->
+<style>
+	div {
+		background-color: grey;
+		display: inline-block;
+		margin: 30px;
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+	}
+	.green.light {
+		background-color: green;
+	}
+	.yellow.light {
+		background-color: yellow;
+	}
+	.red.light {
+		background-color: red;
+	}
+</style>
+<body>
+  <div class="red"></div>
+  <div class="yellow"></div>
+  <div class="green"></div>
+  <button id="next" onclick="go()">开始</button>
+</body>
+<script>
+  function green() {
+    clear()
+    document.querySelector('.green').classList.add("light")
+  }
+  function red() {
+    clear()
+    document.querySelector('.red').classList.add("light")
+  }
+  function yellow() {
+    clear()
+    document.querySelector('.yellow').classList.add("light")
+  }
+  function clear() {
+    var lights = document.getElementsByTagName("div")
+    for (var i = 0; i < 3; i++) {
+      lights[i].classList.remove("light")
+    }
+  }
+  // red 1s -> yellow 2s -> green 3s  循环5次
+  // callback
+  // 1次 递归 4次
+  // let i = 0
+  // function once() {
+  //   i++
+  //   if (i > 3) return
+  //   red()
+  //   setTimeout(() => {
+  //     yellow()
+  //     setTimeout(() => {
+  //       green()
+  //       setTimeout(() => {
+  //         once()
+  //       }, 3000)
+  //     }, 2000)
+  //   }, 1000)
+  // }
+  // once()
+
+  // function once() {
+  //   return new Promise((resolve, reject) => {
+  //     red()
+  //     setTimeout(() => {
+  //       yellow()
+  //       setTimeout(() => {
+  //         green()
+  //         setTimeout(() => {
+  //           resolve()
+  //         }, 3000)
+  //       }, 2000)
+  //     }, 1000)
+  //   })
+  // }
+  // async function loop() {
+  //   for (let i = 0; i < 5; i++) {
+  //     await once()
+  //   }
+  //   clear()
+  // }
+  // loop()
+
+  function sleep(time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    })
+  }
+  async function loop() {
+    for (let i = 0; i < 5; i++) {
+      // red()
+      // await sleep(1000)
+      // yellow()
+      // await sleep(2000)
+      // green()
+      // await sleep(3000)
+      await once()
+    }
+    clear()
+  }
+  // loop()
+  async function once() {
+    red()
+    await sleep(1000)
+    yellow()
+    await sleep(2000)
+    green()
+    await sleep(3000)
+  }
+  // loop()
+  // once返回?
+  // async 调用返回的是一个 promise
+  // 外界是可以知道这个async函数有没有调用完成的
+  loop()
+</script>
