@@ -1,0 +1,75 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-07 15:38:45
+ * @LastEditTime: 2020-08-07 16:28:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\LongList\2.html
+-->
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .wrap {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+  }
+  .scroll {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .item {
+    height: 100px;
+    border-bottom: 1px solid #333;
+    box-sizing: border-box;
+    width: 100%;
+  }
+</style>
+<!-- 100000条列表数据 -->
+<div class="wrap">
+  <!-- 滚动高度 -->
+  <div style="height: 10000000px;" class="scroll"></div>
+  <!-- 内容 -->
+  <div class="content"></div>
+</div>
+<script>
+  let total = 100000
+  let scrollInfo = {
+    itemSize: 100
+  }
+  const wrap = document.querySelector('.wrap')
+  wrap.addEventListener('scroll', handleScroll)
+  let height = window.innerHeight
+  let visiableCount = Math.ceil(height / 100)
+  let d = []
+  for (let i = 1; i <= 100000; i++) {
+    d.push({id: i, value: i})
+  }
+  const content = document.querySelector('.content')
+  function handleScroll() {
+    let scrollTop = wrap.scrollTop
+    // 算出用户能看到的区间起点
+    let start = Math.floor(scrollTop / 100)
+    let end = start + visiableCount
+    console.log(start, end)
+    let list = d.slice(start, Math.min(end, d.length))
+    content.innerHTML = list.map((item) => {
+      return `<div class="item">${item.value}</div>`
+    }).join('')
+    // transform margin-top 值?
+    content.style.transform = `translate3d(0, ${start * 100}px, 0)`
+  }
+  handleScroll()
+</script>
