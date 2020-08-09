@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-24 10:29:34
- * @LastEditTime: 2020-07-29 12:02:15
+ * @LastEditTime: 2020-08-04 21:03:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\sanyuan-music\src\application\Singers\index.js
