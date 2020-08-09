@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 23:10:05
- * @LastEditTime: 2020-08-08 03:14:11
+ * @LastEditTime: 2020-08-09 08:24:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\config.js
@@ -28,6 +28,12 @@ export {
 
 //顶部的高度
 export const HEADER_HEIGHT = 45;
+
+export const playMode = {
+  sequence: 0,
+  loop: 1,
+  random: 2
+}
 
 // 歌手种类
 export const categoryTypes = [{
