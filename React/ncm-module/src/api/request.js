@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-01 23:16:11
- * @LastEditTime: 2020-08-08 16:28:03
+ * @LastEditTime: 2020-08-09 07:32:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\api\request.js
@@ -25,4 +25,7 @@ export const getRankListRequest = () => {
 }
 export const getAlbumDetailRequest = id => {
   return axiosInstance.get(`/playlist/detail?id=${id}`)
+}
+export const getSingerInfoRequest = id => {
+  return axiosInstance.get(`/artists?id=${id}`)
 }

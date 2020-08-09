@@ -1,12 +1,12 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-08 18:48:41
- * @LastEditTime: 2020-08-09 07:20:59
+ * @LastEditTime: 2020-08-09 08:15:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\React\ncm-module\src\application\Singer\index.js
  */
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { Container } from './style'
 import { ImgWrapper, CollectButton, SongListWrapper, BgLayer } from './style'
@@ -14,170 +14,180 @@ import Header from '../../baseUI/header/index'
 import Scroll from '../../baseUI/scroll/index'
 import SongsList from '../SongList'
 import { HEADER_HEIGHT } from '../../api/config'
+import { connect } from 'react-redux'
+import * as actionCreators from './store/actionCreators'
+import Loading  from '../../baseUI/loading/index'
 
 function Singer(props) {
   // mock数据
-  const artist = {
-    picUrl: "https://p2.music.126.net/W__FCWFiyq0JdPtuLJoZVQ==/109951163765026271.jpg",
-    name: "薛之谦",
-    hotSongs: [
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-      {
-        name: "我好像在哪见过你",
-        ar: [{name: "薛之谦"}],
-        al: {
-          name: "薛之谦专辑"
-        }
-      },
-    ]
-  }
+  // const artist = {
+  //   picUrl: "https://p2.music.126.net/W__FCWFiyq0JdPtuLJoZVQ==/109951163765026271.jpg",
+  //   name: "薛之谦",
+  //   hotSongs: [
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //     {
+  //       name: "我好像在哪见过你",
+  //       ar: [{name: "薛之谦"}],
+  //       al: {
+  //         name: "薛之谦专辑"
+  //       }
+  //     },
+  //   ]
+  // }
+  const {
+    artist: immutableArtist,
+    songs: immutableSongs,
+    loading
+  } = props
+  const { getSingerDataDispatch } = props
+  const artist = immutableArtist.toJS()
+  const songs = immutableSongs.toJS()
   const [showStatus, setShowStatus] = useState(true)
   const collectButton = useRef()
   const imageWrapper = useRef()
@@ -234,6 +244,8 @@ function Singer(props) {
     }
   }, [])
   useEffect(() => {
+    const id = props.match.params.id
+    getSingerDataDispatch(id)
     let h = imageWrapper.current.offsetHeight
     songScrollWrapper.current.style.top = `${h - OFFSET}px`
     initialHeight.current = h
@@ -267,14 +279,28 @@ function Singer(props) {
         <SongListWrapper ref={songScrollWrapper}>
           <Scroll onScroll={handleScroll} ref={songScroll}>
             <SongsList
-              songs={artist.hotSongs}
+              songs={songs}
               showCollect={false}
             ></SongsList>
           </Scroll>
         </SongListWrapper>
+        { loading ? <Loading></Loading> : null }
       </Container>
     </CSSTransition>
   )
 }
+const mapStateToProps = state => ({
+  artist: state.getIn(['singerInfo', 'artist']),
+  songs: state.getIn(['singerInfo', 'songsOfArtist']),
+  loading: state.getIn(['singerInfo', 'laoding'])
+})
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingerDataDispatch(id) {
+      dispatch(actionCreators.changeEnterLoading(true))
+      dispatch(actionCreators.getSingerInfo(id))
+    }
+  }
+}
 
-export default Singer
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Singer))
