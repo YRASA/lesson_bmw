@@ -1,0 +1,44 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-09 23:53:58
+ * @LastEditTime: 2020-08-10 00:10:13
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\question\8-4\深拷贝.html
+-->
+<script>
+  let a = {a: 1}
+  let b = {b: 2}
+  Object.assign({}, a, b)  // ...
+  let map = new Map()
+  // map key 任意值
+  // {} key 字符串 Symbol
+  function deepCopy(obj) {
+    let t = {}
+    // 待拷贝的对象
+    // t 拷贝完的对象
+    if (map.get(obj)) return map.get(obj)
+    map.set(obj, t)
+    Object.keys(obj).forEach(k => {
+      if (typeof obj[k] === 'object') {
+        // t[k] = obj[k]
+        t[k] = deepCopy(obj[k])
+      } else {
+        t[k] = obj[k]
+      }
+    })
+    return t
+  }
+  let obj = {a: 1, b: {b: 2}}
+  // obj.t = obj
+  console.log(obj)
+  let obj1 = deepCopy(obj)
+  obj.b.b = 3
+  console.log(obj, obj1)
+  let obj5 = {}
+  let obj2 = {}
+  let obj3 = {}
+  obj5[obj2] = 1
+  obj5[obj3] = 2
+  console.log(obj5[obj3])
+</script>
