@@ -1,0 +1,32 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-03 11:27:07
+ * @LastEditTime: 2020-08-03 11:42:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\css\z-index\transform.html
+-->
+<style>
+  .box {
+    width: 40px;
+    height: 40px;
+    outline: 1px solid red;
+  }
+  .box {
+    transform: translate3d(0, 0, 0);
+    /* Browser将要改变属性的准备工作 */
+    /* will-change: transform; */
+    /* 视距 */
+    /* perspective: 100px; */
+  }
+</style>
+<div class="box box1">1</div>
+<div class="box box2"> 2 </div>
+<script>
+  const box1 = document.querySelector('.box1');
+  setTimeout(() => {
+    //  box1.style.display = 'none'
+    box1.style.transform = `translate3d(60px, 0, 0)`
+  }, 3000);
+  // layout paint
+</script>

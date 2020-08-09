@@ -1,0 +1,25 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-03 15:58:34
+ * @LastEditTime: 2020-08-03 16:31:46
+ * @LastEditors: Please set LastEditors
+ * @Description: sum(1)(2)(3) === 6  // true
+ * @FilePath: \Course\css\z-index\sum.html
+-->
+<script>
+  function sum(a) {
+    return function(b) {
+      return function(c) {
+        return a + b + c
+      }
+    }
+  }
+  // let res = 0
+  // function sum(a) {
+  //   res += a
+  //   console.log(res)
+  //   return sum
+  // }
+  console.log(sum(1)(2)(3) === 6)
+  // console.log(res === 6)
+</script>

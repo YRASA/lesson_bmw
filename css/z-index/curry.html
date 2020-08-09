@@ -1,0 +1,48 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-03 16:25:05
+ * @LastEditTime: 2020-08-03 16:57:30
+ * @LastEditors: Please set LastEditors
+ * @Description: 柯里化(curry)
+ * @FilePath: \Course\css\z-index\curry.html
+-->
+<script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+<script>
+  function sum(a, b, c) {
+    return a + b + c
+  }
+  // sum(1, 2, 3)
+  let curriedSum = _.curry(sum)
+  console.log(curriedSum(1)(2)(3))
+  console.log(curriedSum(1, 2)(3))
+  console.log(curriedSum(1)(2, 3))
+  let curriedSum10 = curriedSum(1)
+  console.log(curriedSum10(2, 3))
+  console.log(curriedSum10(2)(3))
+  console.log("=================")
+  // 手写curry
+  function curry(fun) {
+    const len = fun.length
+    // console.log(len)
+    // fun是一个普通函数
+    // return出去的是具有柯里化功能的函数
+    // 无论分几次传参, 接收到之后都会放到数组里
+    let args = []
+    function help(...arg) {
+      args = args.concat(arg)
+      if (args.length >= len) {
+        return fun(...args)
+      } else {
+        return help
+      }
+    }
+    return help
+  }
+  let currySum = curry(sum)
+  console.log(currySum(1)(2)(3))
+  console.log(currySum(1, 2)(3))
+  console.log(currySum(1)(2, 3))
+  let currySum10 = currySum(1)
+  console.log(currySum10(2, 3))
+  console.log(currySum10(2)(3))
+</script>
