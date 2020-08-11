@@ -1,0 +1,28 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-11 19:31:07
+ * @LastEditTime: 2020-08-11 19:35:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\interview\Event-Loop\2.html
+-->
+<body></body>
+<script>
+  document.body.style.backgroundColor = 'red'
+  setTimeout(() => {
+    document.body.style.backgroundColor = 'blue'
+  }, 0)
+  // red -> blue
+  // blue
+  document.body.addEventListener('click', () => {
+    console.log(1)
+    Promise.resolve(2).then(console.log)
+  })
+  document.body.addEventListener('click', () => {
+    console.log(3)
+    Promise.resolve(4).then(console.log)
+  })
+  // >>> 1 2 3 4
+  // macrotask: [click1(1), click2(3)]
+  // microtassk: [then1(2), then2(4)]
+</script>
