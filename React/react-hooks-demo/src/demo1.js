@@ -1,10 +1,10 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-08-06 15:47:33
- * @LastEditTime: 2020-08-06 16:00:32
+ * @LastEditTime: 2020-08-12 23:56:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \Course\React\react-hooks-demo\src\demo.js
+ * @FilePath: \Course\React\react-hooks-demo\src\demo1.js
  */
 import React, {useState} from 'react';
 
@@ -27,7 +27,7 @@ export const MyComponent = props => {
   })
   return (
     <> 
-      <h4>{userInfo.name}{userInfo.lastname}</h4>
+      <h4>{userInfo.name} {userInfo.lastname}</h4>
       <input type="text"
         value={userInfo.name}
         onChange={(e) => setUserInfo({
