@@ -1,0 +1,76 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-13 16:06:12
+ * @LastEditTime: 2020-08-13 17:04:57
+ * @LastEditors: Please set LastEditors
+ * @Description: design module
+ * @FilePath: \Course\css\瀑布流布局\发布订阅.html
+-->
+<script>
+  // document.addEventListener('click', () => {})
+  // document.addEventListener('click', () => {})
+  // document.addEventListener('click', () => {})
+  // document.onClick = () => {
+
+  // }
+  // http.createServer((req, res) => {
+  //   res.on('data', () => {
+
+  //   })
+  // })
+  let listeners = {
+
+  }
+  let price1 = () => {
+    console.log('price1')
+  }
+  let price2 = () => {
+    console.log('price2')
+  }
+  let blog1 = () => {
+    console.log('blog1')
+  }
+  let blog2 = () => {
+    console.log('blog2')
+  }
+  // {
+  //   'price': [price1, price2],
+  //   'blog': [blog1, blog2]
+  // }
+  function on(name, fn) {
+    if (!listeners[name]) {
+        listeners[name] = []
+    }
+    listeners[name].push(fn)
+  }
+  function emit(name) {
+    // 已知listeners结构
+    // 可选链 ?.
+    // 找到name下面的所有订阅者并执行(通知)
+    const listen = listeners[name] || []
+    for (let fn of listen) {
+      fn()
+    }
+    listeners[name] = listen.filter(listen => !listen.once)
+  }
+  function off(name, fn) {
+    if (listeners[name]) {
+      listeners[name] = listeners[name].filter(listen => listen !== fn)
+    } 
+  }
+  function once(name, fn) {
+    fn.once = true
+    on(name, fn)
+  }
+  on('price', price1)
+  once('price', price2)
+  on('blog', () => {
+    console.log('blog update')
+  })
+  off('price', price1)
+  emit('price')
+  emit('price')
+  setTimeout(() => {
+    emit('blog')
+  }, 3000)
+</script>
