@@ -1,0 +1,29 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-12 16:14:50
+ * @LastEditTime: 2020-08-12 16:49:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\js\react-transition-group\flat.html
+-->
+<script>
+// 数组拍平
+let a = [1, 2, [3, [4, [5]]]]
+a.push(a)  // 生成环形
+let map = new Map()
+function flat(arr) {
+  let res = []
+  if (map.get(arr)) return map.get(arr)
+  map.set(arr, res)
+  for (let item of arr) {
+    if (Array.isArray(item)) {
+      // res = res.concat(flat(item))  // 没有指向该数组
+      res.push(...flat(item))  // 指向该数组
+    } else {
+      res.push(item)
+    }
+  }
+  return res
+}
+console.log(flat(a))
+</script>
