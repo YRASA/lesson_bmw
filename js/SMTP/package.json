@@ -1,0 +1,18 @@
+{
+  "name": "SMTP",
+  "version": "1.0.0",
+  "description": "- telnet smtp.qq.com 25\r - helo xxx\r - auth login\r - base64加密账户输入\r - 出现334 -> base64加密密钥输入(IMPA)\r - mail from:<自己账户>\r - rcpt to:<目标账户>\r - data(分隔线) 换行:按住shift+Enter\r - from:scroll\r   xxxxxxxxxx\r   xxxxxxxxxxxx\r   to: 123\r   subject:hello\r   dear xiaoli: hahaha\r   .(结束符)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemailer": "^6.4.11"
+  },
+  "dependencies": {
+    "ejs": "^3.1.3"
+  }
+}
