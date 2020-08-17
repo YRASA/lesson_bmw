@@ -1,12 +1,12 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-31 20:35:55
- * @LastEditTime: 2020-07-31 20:42:55
+ * @LastEditTime: 2020-08-17 13:15:53
  * @LastEditors: Please set LastEditors
  * @Description: 批量插入
  * @FilePath: \Course\MongoDB-Shell\demo01.js
  */ 
-let startTime = (Date.now())
+let startTime = Date.now()
 let db = connect('log')
 let tempArray = []
 // for (let i = 0; i < 1000; i++) {

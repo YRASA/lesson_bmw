@@ -1,7 +1,7 @@
 /*
  * @Author: Zzceaon
  * @Date: 2020-07-31 20:51:45
- * @LastEditTime: 2020-08-01 00:04:25
+ * @LastEditTime: 2020-08-17 13:18:59
  * @LastEditors: Please set LastEditors
  * @Description: 修改文件
  * @FilePath: \Course\MongoDB-Shell\demo03.js
@@ -31,7 +31,7 @@ let db = connect('company')
 // $unset: 删除一个值
 // db.workmate.update({name: "MinJie"}, {$unset: {age: ''}})  // 只关心key
 
-// 如果没有就自动加上(不过是加到最后, 并不是原来的位置)
+// 如果没有就自动加上(加到最后, 并不是原来的位置)
 // db.workmate.update({name: "MinJie"}, {$set: {age: 20}})
 
 // $inc: 操作data
