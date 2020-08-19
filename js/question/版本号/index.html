@@ -1,7 +1,7 @@
 <!--
  * @Author: Zzceaon
  * @Date: 2020-08-17 16:37:38
- * @LastEditTime: 2020-08-18 22:43:55
+ * @LastEditTime: 2020-08-18 23:36:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Course\js\question\版本号\index.html
@@ -76,7 +76,7 @@ c@0.2.0
   }
   
   function resolve(tree) {
-    let res = []
+    // let res = []
     let map = new Map()
     function walk(node) {
       // res.push(node.name);
@@ -90,6 +90,7 @@ c@0.2.0
       let version = node.name.split('@')[1]
       let name = node.name.split('@')[0]
       if (map.get(name)) {
+        // console.log(map.get(name))  // get取到的是value, 不是key
         let oldVersion = map.get(name)
         if (compareVersion(version, oldVersion) === 1) {
           map.set(name, version)
