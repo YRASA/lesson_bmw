@@ -1,0 +1,36 @@
+<!--
+ * @Author: Zzceaon
+ * @Date: 2020-08-18 21:23:27
+ * @LastEditTime: 2020-08-18 21:34:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Course\css\单位\vmin&vmax.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      /* 去掉padding和margin不然vmin和vmax不生效 */
+      padding: 0;
+      margin: 0;
+    }
+    img {
+      /* 以屏幕较短的一边的长度作为宽度 */
+      /* 保证了图片任何时候都不会超出画面 */
+      /* 拉大视窗出现垂直卷轴 */
+      /* width: 100vmin; */
+      /* 以屏幕较长的一边的长度作为宽度 */
+      /* 当手机横向时就会出现垂直卷轴 */
+      /* 当手机直向时就会出现水平卷轴 */
+      width: 100vmax;
+    }
+  </style>
+</head>
+<body>
+  <img src="http://placekitten.com/500/500" alt="">
+</body>
+</html>
